@@ -49,7 +49,7 @@ opt.whichwrap = "<,>,[,]" -- 方向键左右可以换行移动(不是hl，而是
 -- theme
 opt.cursorline = true -- 光标行高亮
 opt.termguicolors = true
-opt.cmdheight = 2
+opt.cmdheight = 1
 opt.showtabline = 2 -- 总是显示tab条
 opt.showmode = false
 
