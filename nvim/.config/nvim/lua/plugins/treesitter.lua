@@ -1,5 +1,5 @@
-require 'nvim-treesitter.configs'.setup({
-  ensure_installed = { 'lua' },
+require("nvim-treesitter.configs").setup({
+  ensure_installed = { "lua" },
   auto_install = true,
   highlight = {
     enable = true,
@@ -9,7 +9,7 @@ require 'nvim-treesitter.configs'.setup({
       if ok and stats and stats.size > max_filesize then
         return true
       end
-    end
+    end,
   },
   -- incremental_selection = {
   --   enable = true,
@@ -21,9 +21,14 @@ require 'nvim-treesitter.configs'.setup({
   --   },
   -- },
   indent = {
-    enable = true
+    enable = true,
   },
   autotag = {
-    enable = true
-  }
+    enable = true,
+  },
 })
+
+local opt = vim.opt
+
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
