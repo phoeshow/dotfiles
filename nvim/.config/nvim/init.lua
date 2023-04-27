@@ -66,9 +66,16 @@ require("lazy").setup({
       require("plugins.bufferline")
     end,
   },
-  { "nvim-treesitter/nvim-treesitter",    build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter",         build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter-refactor" },
   -- color highlight
-  { "norcalli/nvim-colorizer.lua",        opts = {},          event = "CursorHold" },
+  {
+    "norcalli/nvim-colorizer.lua",
+    event = "CursorHold",
+    config = function()
+      require("plugins.colorizer")
+    end,
+  },
   { "lukas-reineke/indent-blankline.nvim" },
   { "lewis6991/gitsigns.nvim",            opts = {} },
   {
@@ -106,6 +113,7 @@ require("lazy").setup({
   },
   "windwp/nvim-autopairs",
   "windwp/nvim-ts-autotag",
+  { "mg979/vim-visual-multi" },
   "akinsho/toggleterm.nvim",
   {
     "ray-x/lsp_signature.nvim",
@@ -119,6 +127,24 @@ require("lazy").setup({
     config = function()
       require("plugins.symbols-outline")
     end,
+  },
+  {
+    "mxsdev/nvim-dap-vscode-js",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
+    },
+    config = function()
+      local dap = require("dapconfig")
+      dap.setupDap()
+      dap.setupDapUI()
+      dap.setupDebuggers()
+    end,
+  },
+  {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
   },
 })
 

@@ -4,6 +4,9 @@ local opt = vim.opt
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 
+-- autoread for git branch switch
+opt.autoread = true
+
 -- line number
 opt.number = true         -- 开启行号显示
 opt.relativenumber = true -- 开启相对行号

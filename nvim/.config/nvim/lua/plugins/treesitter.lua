@@ -26,9 +26,19 @@ require("nvim-treesitter.configs").setup({
   autotag = {
     enable = true,
   },
+  refactor = {
+    --[[ highlight_definitions = {
+      enable = true,
+      clear_on_cursor_move = true,
+    }, ]]
+    --[[ highlight_current_scope = {
+      enable = true,
+    }, ]]
+  },
 })
 
 local opt = vim.opt
 
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldenable = false

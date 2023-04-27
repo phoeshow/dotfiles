@@ -1,8 +1,8 @@
 require("catppuccin").setup({
-  flavour = "mocha",         -- latte, frappe, macchiato, mocha
-  transparent_background = false,
+  flavour = "frappe",        -- latte, frappe, macchiato, mocha
   show_end_of_buffer = false, -- show the '~' characters after the end of buffers
-  term_colors = true,
+  transparent_background = true,
+  -- term_colors = true,
   dim_inactive = {
     enabled = true,
     shade = "dark",
@@ -25,13 +25,19 @@ require("catppuccin").setup({
     operators = {},
   },
   color_overrides = {},
-  custom_highlights = {},
+  custom_highlights = function(colors)
+    return {
+      ["@tag"] = { fg = colors.teal },
+      ["CursorLine"] = { bg = colors.surface0 },
+    }
+  end,
   integrations = {
     cmp = true,
     gitsigns = true,
     nvimtree = true,
     telescope = true,
     notify = false,
+    treesitter = true,
     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   },
 })
