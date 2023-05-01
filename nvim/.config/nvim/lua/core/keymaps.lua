@@ -8,6 +8,8 @@ local map = vim.api.nvim_set_keymap
 local opt = { noremap = true, silent = true }
 -- 取消掉F1 打开帮助的快捷键，这键盘老是按到
 map("n", "<F1>", "", opt)
+-- esc 重新映射
+map("i", "jk", "<esc>", opt)
 
 -- 删除键不复制
 map("n", "x", '"_x', opt)
