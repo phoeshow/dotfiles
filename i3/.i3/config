@@ -188,6 +188,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
 assign [title="YesPlayMusic"] $ws3
+assign [title="NetEase Cloud Music Gtk4"] $ws3
 assign [title="Steam"] $ws4
 
 # Open specific applications in floating mode
