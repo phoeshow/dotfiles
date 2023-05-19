@@ -134,9 +134,9 @@ require("lazy").setup({
   {
     "ray-x/lsp_signature.nvim",
     event = "VeryLazy",
-    config = function()
-      require("plugins.lsp_signature")
-    end,
+    -- config = function()
+    --   require("plugins.lsp_signature")
+    -- end,
   },
   {
     "simrat39/symbols-outline.nvim",

@@ -33,16 +33,19 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, attach_opts)
   vim.keymap.set("n", "g]", vim.diagnostic.goto_next, attach_opts)
 
-  -- vim.keymap.set('n', '<leader>f', formatFn, attach_opts)
+  vim.keymap.set({ "n" }, "<Leader>k", function()
+    vim.lsp.buf.signature_help()
+  end, { silent = true, noremap = true, desc = "toggle signature" })
 
-  --[[ if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      callback = formatFn
-    })
-  end ]]
+  require("lsp_signature").on_attach({
+    bind = true,
+    handler_opts = {
+      border = "single",
+    },
+    hint_enable = false,
+    noice = true,
+    toggle_key = "<C-k>",
+  }, bufnr)
 end
 require("mason-lspconfig").setup_handlers({
   -- The first entry (without a key) will be the default handler
