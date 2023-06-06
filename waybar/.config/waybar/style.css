@@ -1,0 +1,204 @@
+@import "frappe.css";
+* {
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+}
+
+window#waybar {
+  background-color: alpha(@crust, 0.8);
+  color: @text;
+}
+
+tooltip {
+  background: @mantle;
+  opacity: 0.8;
+  border: 2px solid alpha(@surface0, 0.9);
+}
+
+tooltip label {
+  color: #cdd6f4;
+}
+
+#workspaces button {
+  padding: 5px;
+  color: @text;
+  background: @mantal;
+  border-radius: 0px;
+  border-bottom: 3px solid darker(@blue);
+}
+
+#workspaces button.active {
+  color: @crust;
+  background: @blue;
+}
+
+#workspaces button.focused {
+  color: @crust;
+  background: @maroon;
+}
+
+#workspaces button.urgent {
+  color: @crust;
+  background: @green;
+}
+
+#workspaces button:hover {
+  background: @surface0;
+  color: @subtext0;
+}
+
+#mode {
+  background-color: #64727d;
+  border-bottom: 3px solid #ffffff;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpada,
+#mpd,
+#submap {
+  background: @surface0;
+  padding: 0px 15px 0px 10px;
+  margin: 4px 10px 4px 0px;
+  border-radius: 16px;
+}
+
+#submap {
+  border-radius: 0px;
+  padding: 0px;
+  margin: 0px;
+  background: none;
+  color: @sky;
+}
+
+#window,
+#workspaces {
+  margin: 0 4px;
+}
+
+#clock {
+  color: @blue;
+}
+
+#cpu {
+  color: @mauve;
+  border-radius: 16px 0px 0px 16px;
+  margin: 4px 0px 4px 0px;
+}
+
+#memory {
+  color: @rosewater;
+  border-radius: 0px 16px 16px 0px;
+}
+
+#network {
+  color: @peach;
+}
+
+#network.disconnected {
+  background-color: @red;
+  color: @mantle;
+}
+#pulseaudio {
+  color: @green;
+}
+
+#pulseaudio.muted {
+  /* background-color: #90b1b1; */
+  color: @yellow;
+}
+
+#wireplumber {
+  background-color: #fff0f5;
+  color: #000000;
+}
+
+#wireplumber.muted {
+  /* background-color: #f53c3c; */
+}
+
+#custom-media {
+  /* background-color: #66cc99; */
+  color: #2a5c45;
+  min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+  /* background-color: #66cc99; */
+}
+
+#custom-media.custom-vlc {
+  /* background-color: #ffa000; */
+}
+
+#temperature {
+  /* background-color: #f0932b; */
+}
+
+#temperature.critical {
+  /* background-color: #eb4d4b; */
+}
+
+#mpd {
+  background-color: #66cc99;
+  color: #2a5c45;
+}
+
+#mpd.disconnected {
+  background-color: @red;
+}
+
+#mpd.stopped {
+  background-color: #90b1b1;
+}
+
+#mpd.paused {
+  background-color: #51a37a;
+}
+
+#language {
+  /* background: #00b093; */
+  color: #740864;
+  padding: 0 5px;
+  margin: 0 5px;
+  min-width: 16px;
+}
+
+#keyboard-state {
+  /* background: #97e1ad; */
+  color: #000000;
+  padding: 0 0px;
+  margin: 0 5px;
+  min-width: 16px;
+}
+
+#keyboard-state > label {
+  padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+  background-color: transparent;
+}
