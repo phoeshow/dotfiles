@@ -5,7 +5,7 @@
   // "height": 30, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
   // Choose the order of the modules
-  "modules-left": ["wlr/workspaces", "wlr/taskbar"],
+  "modules-left": ["wlr/workspaces"],
   "modules-center": ["hyprland/submap"],
   "modules-right": [
     "pulseaudio",

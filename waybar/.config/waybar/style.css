@@ -79,11 +79,11 @@ tooltip label {
 }
 
 #submap {
-  border-radius: 0px;
-  padding: 0px;
-  margin: 0px;
+  border-radius: 4px;
+  padding: 0px 5px;
+  margin: 0px 4px;
   background: none;
-  color: @sky;
+  color: @peach;
 }
 
 #window,
