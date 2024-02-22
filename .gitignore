@@ -1,0 +1,5 @@
+nvim/lazy-lock.json
+nvim/.luarc.json
+tmux/plugins
+kitty/*.bak
+.DS_Store

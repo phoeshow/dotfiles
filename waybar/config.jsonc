@@ -1,0 +1,97 @@
+{
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  // Choose the order of the modules
+  "modules-left": ["idle_inhibitor", "hyprland/workspaces"],
+  "modules-center": ["hyprland/submap"],
+  "modules-right": [
+    // "mpris",
+    "pulseaudio",
+    "network",
+    "cpu",
+    // "temperature",
+    "memory",
+    "keyboard-state",
+    "clock",
+    "tray"
+  ],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "show-special": false,
+    "on-click": "activate",
+    "all-outputs": true,
+    "format-icons": {
+      "1": "󰎦",
+      "2": "󰎩",
+      "3": "󰎬",
+      "4": "󰎮",
+      "5": "󰎰",
+      "6": "󰎵",
+      "7": "󰎸 ",
+      "8": "󰎻 󰎈",
+      "9": "󰎾 ",
+      "focused": " ",
+      "default": " "
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󱋙",
+      "deactivated": "󰌪"
+    }
+  },
+  "hyprland/submap": {
+    "format": "{}",
+    "max-length": 8,
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6
+  },
+  "clock": {
+    "format": "{:%m-%d %a %H:%M} ",
+    "locale": "C",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    // "format-alt": "{:%Y-%m-%d  %a} 󰃭"
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "{usage}% "
+  },
+  "memory": {
+    "format": "{percentage}% 󰘚"
+  },
+  "network": {
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {essid}/{ipaddr}/{cidr}",
+    "format": " {bandwidthUpBytes}  {bandwidthDownBytes} ",
+    "interval": 5
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon} {format_source}",
+    "format-muted": "󰍷 {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "default": ["", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"]
+    },
+    "on-click": "pavucontrol -t 3",
+    "on-click-right": "pavucontrol -t 4"
+  },
+  "mpris": {
+    "format": "{status_icon} {dynamic}",
+    "format-paused": "{status_icon} {dynamic}",
+    "dynamic-order": ["title", "artist"],
+    "status-icons": {
+      "paused": "",
+      "playing": "",
+      "stopped": ""
+    },
+    "ignored-players": ["firefox"]
+  }
+}
