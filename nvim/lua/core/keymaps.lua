@@ -21,7 +21,7 @@ map("n", "+", "<C-a>", opt)
 map("n", "-", "<C-x>", opt)
 
 -- 选中全部内容 ctrl+a
-map("n", "<C-a>", "gg<S-v>G", opt)
+-- map("n", "<C-a>", "gg<S-v>G", opt)
 
 -- 分屏跳转
 -- Alt + hjkl  窗口之间跳转
