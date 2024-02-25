@@ -1,11 +1,35 @@
 local wezterm = require("wezterm")
 
 -- This will hold the configuration.
-local config = wezterm.config_builder()
+local config = {}
+
+if wezterm.config_builder then
+  config = wezterm.config_builder()
+end
+
+local function platform()
+  if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+    return "Windows"
+  elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
+    return "Linux"
+  elseif wezterm.target_triple == "x86_64-apple-darwin" or wezterm.target_triple == "aarch64-apple-darwin" then
+    return "MacOS"
+  else
+    return "Unknown"
+  end
+end
+
+if platform() == "Linux" then
+  config.font_size = 12
+else
+  config.font_size = 16
+end
 
 config.color_scheme = "Catppuccin Frappe"
-config.font_size = 16
-config.font = wezterm.font("Rec Mono Semicasual")
+config.font = wezterm.font_with_fallback({
+  "Rec Mono Semicasual",
+  "Noto Sans Mono CJK SC",
+})
 config.window_background_opacity = 0.9
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = true
