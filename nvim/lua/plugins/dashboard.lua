@@ -28,7 +28,7 @@ return {
         },
         center = {
           {
-            icon = "󰈞 ",
+            icon = " ",
             icon_hl = "Title",
             desc = "Find File",
             desc_hl = "String",

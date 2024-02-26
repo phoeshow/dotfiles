@@ -165,6 +165,9 @@ wezterm.on("update-status", function(window, pane)
     stat_color = "#ef9f76"
   end
 
+  local cwd = pane:get_current_working_dir()
+  local cwd_path = cwd.file_path
+
   local basename = function(s)
     return string.gsub(s, "(.*[/\\])(.*)", "%2")
   end
@@ -179,15 +182,21 @@ wezterm.on("update-status", function(window, pane)
 
   -- Right Status
   window:set_right_status(wezterm.format({
+    { Foreground = { Color = "#ea999c" } },
+    { Attribute = { Intensity = "Bold" } },
+    { Text = wezterm.nerdfonts.fa_folder_o .. " " .. basename(cwd_path) },
+    "ResetAttributes",
+    { Text = " | " },
+    "ResetAttributes",
     { Foreground = { Color = "#e5c890" } },
     { Attribute = { Intensity = "Bold" } },
-    { Text = basename(pane:get_foreground_process_name()) },
+    { Text = wezterm.nerdfonts.fa_code .. " " .. basename(pane:get_foreground_process_name()) },
     "ResetAttributes",
     { Text = " | " },
     "ResetAttributes",
     { Attribute = { Intensity = "Bold" } },
     { Foreground = { Color = "#81c8be" } },
-    { Text = wezterm.nerdfonts.md_clock .. " " .. time },
+    { Text = wezterm.nerdfonts.fa_clock_o .. " " .. time },
   }))
 end)
 
