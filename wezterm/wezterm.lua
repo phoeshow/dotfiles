@@ -262,13 +262,14 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     wezterm.nerdfonts.md_numeric_8,
     wezterm.nerdfonts.md_numeric_9,
   }
+  local title = tab_title(tab)
 
   if #tabs > 1 then
     index = index_table[tab.tab_index + 1] .. " "
+    title = wezterm.truncate_right(title, max_width - 4)
+  else
+    title = wezterm.truncate_right(title, max_width - 2)
   end
-
-  local title = tab_title(tab)
-  title = wezterm.truncate_right(title, max_width - 4)
 
   return wezterm.format({
     { Attribute = { Intensity = intensity } },
