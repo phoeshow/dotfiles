@@ -2,7 +2,7 @@
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
   // Choose the order of the modules
-  "modules-left": ["idle_inhibitor", "hyprland/workspaces"],
+  "modules-left": ["idle_inhibitor", "hyprland/workspaces", "hyprland/window"],
   "modules-center": ["hyprland/submap"],
   "modules-right": [
     // "mpris",
@@ -35,6 +35,14 @@
     },
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "rewrite": {
+      "(.*) - wezterm": " $1",
+      "(.*) — Mozilla Firefox": " $1",
+      "NetEase Cloud Music Gtk4": " NetEase Cloud Music"
+    }
   },
   "idle_inhibitor": {
     "format": "{icon}",

@@ -45,14 +45,9 @@ config.window_padding = {
   bottom = 0,
 }
 
-config.colors = {
-  tab_bar = {
-    active_tab = {
-      bg_color = "#a6d189",
-      fg_color = "#303446",
-      intensity = "Bold",
-    },
-  },
+config.inactive_pane_hsb = {
+  saturation = 0.7,
+  brightness = 0.5,
 }
 
 local act = wezterm.action
@@ -161,7 +156,7 @@ wezterm.on("update-status", function(window, pane)
     stat_color = "#ca9ee6"
   end
   if window:leader_is_active() then
-    stat = "LDR "
+    stat = ""
     stat_color = "#ef9f76"
   end
 
@@ -170,6 +165,15 @@ wezterm.on("update-status", function(window, pane)
 
   local basename = function(s)
     return string.gsub(s, "(.*[/\\])(.*)", "%2")
+  end
+
+  local currentTab = window:active_tab()
+  local panes = currentTab:panes()
+
+  local win_count = wezterm.nerdfonts.cod_window
+
+  if #panes > 1 then
+    win_count = wezterm.nerdfonts.cod_layout
   end
 
   -- Left status (left of the tab line)
@@ -182,22 +186,102 @@ wezterm.on("update-status", function(window, pane)
 
   -- Right Status
   window:set_right_status(wezterm.format({
-    { Foreground = { Color = "#ea999c" } },
+    { Foreground = { Color = "#303446" } },
+    { Background = { Color = "#ca9ee6" } },
     { Attribute = { Intensity = "Bold" } },
-    { Text = wezterm.nerdfonts.fa_folder_o .. " " .. basename(cwd_path) },
+    { Text = " " .. win_count .. "  " },
     "ResetAttributes",
-    { Text = " | " },
-    "ResetAttributes",
-    { Foreground = { Color = "#e5c890" } },
+    { Foreground = { Color = "#303446" } },
+    { Background = { Color = "#ea999c" } },
     { Attribute = { Intensity = "Bold" } },
-    { Text = wezterm.nerdfonts.fa_code .. " " .. basename(pane:get_foreground_process_name()) },
+    { Text = " " .. wezterm.nerdfonts.md_folder .. " " .. basename(cwd_path) .. " " },
     "ResetAttributes",
-    { Text = " | " },
+    { Background = { Color = "#e5c890" } },
+    { Foreground = { Color = "#303446" } },
+    { Attribute = { Intensity = "Bold" } },
+    { Text = " " .. wezterm.nerdfonts.dev_terminal .. " " .. basename(pane:get_foreground_process_name()) .. " " },
     "ResetAttributes",
     { Attribute = { Intensity = "Bold" } },
-    { Foreground = { Color = "#81c8be" } },
-    { Text = wezterm.nerdfonts.fa_clock_o .. " " .. time },
+    { Foreground = { Color = "#303446" } },
+    { Background = { Color = "#81c8be" } },
+    { Text = " " .. wezterm.nerdfonts.md_clock .. " " .. time .. " " },
   }))
+end)
+
+wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
+  local zoomed = ""
+  if #panes > 1 then
+    zoomed = ""
+  end
+  if tab.active_pane.is_zoomed then
+    zoomed = "󰖯"
+  end
+
+  local index = ""
+  if #tabs > 1 then
+    index = string.format("[%d|%d] ", tab.tab_index + 1, #tabs)
+  end
+
+  return zoomed .. index .. tab.active_pane.title .. " - wezterm"
+end)
+
+function tab_title(tab_info)
+  local title = tab_info.tab_title
+  if title and #title > 0 then
+    return title
+  end
+
+  return tab_info.active_pane.title
+end
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+  local edge_background = "#292c3c"
+  local background = "#414559"
+  local foreground = "#c6d0f5"
+  local intensity = "Normal"
+
+  if tab.is_active then
+    background = "#a6d189"
+    foreground = "#303446"
+    intensity = "Bold"
+  elseif hover then
+    background = "#51576d"
+    foreground = "#c6d0f5"
+  end
+
+  local edge_foreground = background
+  local index = ""
+  local index_table = {
+    wezterm.nerdfonts.md_numeric_1,
+    wezterm.nerdfonts.md_numeric_2,
+    wezterm.nerdfonts.md_numeric_3,
+    wezterm.nerdfonts.md_numeric_4,
+    wezterm.nerdfonts.md_numeric_5,
+    wezterm.nerdfonts.md_numeric_6,
+    wezterm.nerdfonts.md_numeric_7,
+    wezterm.nerdfonts.md_numeric_8,
+    wezterm.nerdfonts.md_numeric_9,
+  }
+
+  if #tabs > 1 then
+    index = index_table[tab.tab_index + 1] .. " "
+  end
+
+  local title = tab_title(tab)
+  title = wezterm.truncate_right(title, max_width - 4)
+
+  return wezterm.format({
+    { Attribute = { Intensity = intensity } },
+    { Background = { Color = edge_background } },
+    { Foreground = { Color = edge_foreground } },
+    { Text = wezterm.nerdfonts.ple_lower_right_triangle },
+    { Background = { Color = background } },
+    { Foreground = { Color = foreground } },
+    { Text = index .. title },
+    { Background = { Color = edge_background } },
+    { Foreground = { Color = edge_foreground } },
+    { Text = wezterm.nerdfonts.ple_upper_left_triangle },
+  })
 end)
 
 return config

@@ -2,9 +2,8 @@
 * {
   font-family:
     JetBrains Mono,
-    Noto Sans CJK,
     monospace;
-  font-weight: bold;
+  font-weight: 900;
   font-size: 14px;
 }
 
@@ -34,6 +33,7 @@ tooltip label {
 #mode,
 #submap,
 #idle_inhibitor,
+#window,
 #mpris {
   color: @surface0;
   border-radius: 6px;
@@ -41,6 +41,12 @@ tooltip label {
   padding: 2px 16px 2px 16px;
   border-bottom-style: solid;
   border-bottom-width: 6px;
+  min-height: 22px;
+}
+
+#window {
+  background-color: @teal;
+  border-bottom-color: shade(@teal, 0.7);
 }
 
 #tray {
