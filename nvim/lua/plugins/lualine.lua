@@ -231,8 +231,6 @@ return {
         color = { fg = colors.peach, gui = "bold" },
       })
 
-      ins_left()
-
       ins_left({
         "diagnostics",
         sources = { "nvim_diagnostic" },
