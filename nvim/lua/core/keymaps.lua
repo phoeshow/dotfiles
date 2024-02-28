@@ -51,7 +51,8 @@ map("v", "K", ":move '<-2<CR>gv-gv", opt)
 -- map("n", "<C-k>", "5k", opt)
 
 -- 快速保存文件
-map({ "n", "i" }, "<c-s>", "<cmd>w!<cr>", opt)
+-- 另有用处
+-- map({ "n", "i" }, "<c-s>", "<cmd>w!<cr>", opt)
 
 -- 取消高亮
 map("n", "<leader>nh", ":nohl<CR>", opt)

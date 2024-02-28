@@ -14,7 +14,7 @@ case $entries in
         systemctl $entries
         ;;
     lock)
-        $HOME/.config/hypr/scripts/screenlock.sh
+        hyprlock
         ;;
     logout)
         hyprctl dispatch exit 0

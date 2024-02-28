@@ -11,7 +11,7 @@ return {
     require("lspsaga").setup({
       ui = {
         border = "single",
-        -- kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+        kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
       },
       symbol_in_winbar = {
         enable = false,

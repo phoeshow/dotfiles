@@ -87,15 +87,18 @@ local function bind_if(cond, key, mods, action)
 end
 
 config.leader = {
-  key = "a",
+  key = "b",
   mods = "CTRL",
   timeout_milliseconds = 1000,
 }
 
 config.keys = {
   { key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
+  { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
   { key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
+  { key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
   { key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
+  { key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
   { key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
   bind_if(is_outside_vim, "h", "ALT", act.ActivatePaneDirection("Left")),
@@ -111,7 +114,7 @@ config.keys = {
   { key = "C", mods = "CTRL", action = wezterm.action.CopyTo("ClipboardAndPrimarySelection") },
 
   -- copy-mode
-  { key = "c", mods = "LEADER", action = act.ActivateCopyMode },
+  { key = "C", mods = "LEADER", action = act.ActivateCopyMode },
 
   -- change font size
   { key = "=", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
