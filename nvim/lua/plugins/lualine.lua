@@ -170,12 +170,13 @@ return {
           }
 
           local mode_code = vim.api.nvim_get_mode().mode
+          local dec_symbol = "󰣐 "
 
           if mode_symbol[mode_code] == nil then
-            return "█ " .. mode_code .. " █"
+            return dec_symbol .. mode_code .. dec_symbol
           end
 
-          return "█ " .. mode_symbol[mode_code] .. " █"
+          return dec_symbol .. mode_symbol[mode_code] .. dec_symbol
         end,
         color = function()
           local mode_code = vim.api.nvim_get_mode().mode
