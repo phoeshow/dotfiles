@@ -3,13 +3,19 @@
   font-family:
     JetBrains Mono,
     monospace;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 14px;
 }
 
 window#waybar {
-  /* background-color: alpha(@base, 0.8); */
-  background: transparent;
+  background: linear-gradient(@base, @mantle);
+  border-radius: 4px;
+  border: 2px solid @surface1;
+  opacity: 0.95;
+}
+
+box {
+  padding: 0 6px;
 }
 
 tooltip {
@@ -22,154 +28,110 @@ tooltip label {
   color: @text;
 }
 
-#workspaces,
-#clock,
-#cpu,
-#memory,
-#temperature,
-#network,
-#pulseaudio,
-#tray,
-#mode,
-#submap,
 #idle_inhibitor,
-#window,
-#mpris {
-  color: @surface0;
-  border-radius: 6px;
-  margin: 0px 4px 0px 4px;
-  padding: 2px 16px 2px 16px;
-  border-bottom-style: solid;
-  border-bottom-width: 6px;
-  min-height: 22px;
+#custom-applications,
+#custom-power,
+#custom-wallpaper {
+  padding: 0 6px;
+}
+
+#custom-split {
+  margin: 0 10px;
+  color: @surface1;
+}
+#custom-applications {
+  color: @blue;
+}
+
+#custom-wallpaper {
+  color: @pink;
+}
+
+#custom-power {
+  color: @red;
 }
 
 #window {
-  background-color: @teal;
-  border-bottom-color: shade(@teal, 0.7);
-}
-
-#tray {
-  background-color: @base;
-  border-bottom-color: shade(@base, 0.7);
+  color: @teal;
 }
 
 #mpris {
-  background-color: @rosewater;
-  border-bottom-color: shade(@rosewater, 0.7);
+  color: @rosewater;
 }
 
 #workspaces {
   padding: 0;
-  border-width: 0px;
+  border-width: 0;
 }
 
 #workspaces button {
-  color: @surface0;
-  padding: 0px 0.5em;
-  margin: 0;
+  padding: 0;
   border-radius: 0;
-  border-bottom-style: solid;
-  border-bottom-width: 6px;
-  background: @lavender;
-  border-bottom-color: shade(@lavender, 0.7);
-}
-
-#workspaces button:first-child {
-  border-radius: 6px 0 0 6px;
-}
-#workspaces button:last-child {
-  border-radius: 0 6px 6px 0;
-}
-#workspaces button:only-child {
-  border-radius: 6px;
+  color: @lavender;
 }
 
 #workspaces button.active {
-  background-color: @mauve;
-  border-bottom-color: shade(@mauve, 0.7);
+  color: @green;
 }
 
 #workspaces button.focused {
-  background-color: @sky;
-  border-bottom-color: shade(@sky, 0.7);
 }
 
 #workspaces button.urgent {
-  background-color: @green;
-  border-bottom-color: shade(@green, 0.7);
 }
 
 #workspaces button:hover {
-  background-color: @sky;
-  border-bottom-color: shade(@sky, 0.7);
 }
 
+#idle_inhibitor {
+  /* margin-left: 10px; */
+}
 #idle_inhibitor.activated {
-  background-color: @maroon;
-  border-bottom-color: shade(@maroon, 0.7);
+  color: @maroon;
 }
 #idle_inhibitor.deactivated {
-  background-color: @green;
-  border-bottom-color: shade(@green, 0.7);
+  color: @green;
 }
 #mode {
-  background-color: #64727d;
-  border-bottom: 3px solid #ffffff;
+  background-color: @base;
 }
 
 #submap {
-  background-color: @peach;
-  border-bottom-color: shade(@peach, 0.7);
+  color: @peach;
 }
 
 #clock {
-  background-color: @blue;
-  border-bottom-color: shade(@blue, 0.7);
+  color: @blue;
 }
 
 #cpu {
-  background-color: @mauve;
-  border-bottom-color: shade(@mauve, 0.7);
-  border-radius: 4px 0px 0px 4px;
-  margin-right: 0px;
+  color: @mauve;
+  margin-right: 8px;
 }
 
 #memory {
-  background-color: @sky;
-  border-bottom-color: shade(@sky, 0.7);
-  border-radius: 0px 4px 4px 0px;
-  margin-left: 0px;
+  color: @sky;
 }
 
 #network {
-  background-color: @peach;
-  border-bottom-color: shade(@peach, 0.7);
+  color: @peach;
 }
 
 #network.disconnected {
-  background-color: @red;
-  border-bottom-color: shade(@red, 0.7);
+  color: @red;
 }
 #pulseaudio {
-  background-color: @green;
-  border-bottom-color: shade(@green, 0.7);
+  color: @green;
 }
 
 #pulseaudio.muted {
-  background-color: @maroon;
-  border-bottom-color: shade(@maroon, 0.7);
+  color: @maroon;
 }
 
 #temperature {
-  margin-left: 0;
-  margin-right: 0;
-  border-radius: 0;
-  background-color: @pink;
-  border-bottom-color: shade(@pink, 0.7);
+  color: @pink;
 }
 
 #temperature.critical {
-  background-color: @red;
-  border-bottom-color: shade(@red, 0.7);
+  color: @red;
 }

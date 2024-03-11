@@ -1,38 +1,72 @@
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
+  "height": 30,
   // Choose the order of the modules
-  "modules-left": ["idle_inhibitor", "hyprland/workspaces", "hyprland/window"],
+  "modules-left": [
+    // "idle_inhibitor",
+    "custom/applications",
+    "custom/split",
+    "hyprland/workspaces",
+    "custom/split",
+    "hyprland/window"
+  ],
   "modules-center": ["hyprland/submap"],
   "modules-right": [
     // "mpris",
     "pulseaudio",
+    "custom/split",
     "network",
+    "custom/split",
     "cpu",
     // "temperature",
     "memory",
-    "keyboard-state",
+    "custom/split",
+    // "keyboard-state",
     "clock",
-    "tray"
+    "custom/split",
+    "tray",
+    "custom/split",
+    "custom/wallpaper",
+    "idle_inhibitor",
+    "custom/power"
   ],
+  "custom/split": {
+    "format": "|"
+  },
+  "custom/wallpaper": {
+    "format": "󰋷",
+    "tooltip": false,
+    "on-click": "sh ~/.config/hypr/scripts/wallpaper.sh"
+  },
+  "custom/applications": {
+    "format": "󰣇",
+    "on-click": "sh ~/.config/hypr/scripts/wofi.sh",
+    "tooltip": false
+  },
+  "custom/power": {
+    "format": "",
+    "on-click": "sh ~/.config/hypr/scripts/wofipower.sh",
+    "tooltip": false
+  },
   "hyprland/workspaces": {
-    "format": "{icon}",
+    "format": "[{id}]",
     "show-special": false,
     "on-click": "activate",
     "all-outputs": true,
-    "format-icons": {
-      "1": "󰎦",
-      "2": "󰎩",
-      "3": "󰎬",
-      "4": "󰎮",
-      "5": "󰎰",
-      "6": "󰎵",
-      "7": "󰎸 ",
-      "8": "󰎻 󰎈",
-      "9": "󰎾 ",
-      "focused": " ",
-      "default": " "
-    },
+    // "format-icons": {
+    //   "1": "󰎦",
+    //   "2": "󰎩",
+    //   "3": "󰎬",
+    //   "4": "󰎮",
+    //   "5": "󰎰",
+    //   "6": "󰎵",
+    //   "7": "󰎸 ",
+    //   "8": "󰎻 ",
+    //   "9": "󰎾 ",
+    //   "focused": " ",
+    //   "default": " "
+    // },
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
