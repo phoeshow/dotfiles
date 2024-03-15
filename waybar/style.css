@@ -108,9 +108,13 @@ tooltip label {
   color: @mauve;
   margin-right: 8px;
 }
+#disk {
+  color: @flamingo;
+}
 
 #memory {
   color: @sky;
+  margin-right: 8px;
 }
 
 #network {

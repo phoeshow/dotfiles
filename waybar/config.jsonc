@@ -2,6 +2,10 @@
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
   "height": 30,
+  "margin-left": 8,
+  "margin-right": 8,
+  "margin-top": 2,
+  "margin-bottom": 0,
   // Choose the order of the modules
   "modules-left": [
     // "idle_inhibitor",
@@ -21,6 +25,7 @@
     "cpu",
     // "temperature",
     "memory",
+    "disk",
     "custom/split",
     // "keyboard-state",
     "clock",
@@ -32,7 +37,9 @@
     "custom/power"
   ],
   "custom/split": {
-    "format": "|"
+    "format": "|",
+    "tooltip": false,
+    "interval": "once"
   },
   "custom/wallpaper": {
     "format": "󰋷",
@@ -106,6 +113,11 @@
   },
   "memory": {
     "format": "{percentage}% 󰘚"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "{percentage_used}% 󰆼",
+    "path": "/"
   },
   "network": {
     "tooltip-format": "{ifname} via {gwaddr}",
