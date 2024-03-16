@@ -155,13 +155,17 @@ wezterm.on("update-status", function(window, pane)
   local time = wezterm.strftime("%H:%M")
   local stat = ""
   local stat_color = "#a6d189"
+  local stat_back_color = "#292c3c"
+  local stat_seprator = wezterm.nerdfonts.ple_upper_left_triangle
   if window:active_key_table() then
     stat = window:active_key_table() .. " "
     stat_color = "#ca9ee6"
+    stat_back_color = "#292c3c"
   end
   if window:leader_is_active() then
     stat = ""
-    stat_color = "#ef9f76"
+    stat_color = "#292c3c"
+    stat_back_color = "#ef9f76"
   end
 
   local cwd = pane:get_current_working_dir()
@@ -171,21 +175,31 @@ wezterm.on("update-status", function(window, pane)
     return string.gsub(s, "(.*[/\\])(.*)", "%2")
   end
 
-  local currentTab = window:active_tab()
-  local panes = currentTab:panes()
-
-  local win_count = wezterm.nerdfonts.cod_window
-
-  if #panes > 1 then
-    win_count = wezterm.nerdfonts.cod_layout
+  -- local win_count = wezterm.nerdfonts.cod_window
+  local win_split_state = ""
+  local tab = pane:tab()
+  if tab ~= nil then
+    if #tab:panes_with_info() == 1 then -- single pane
+      win_split_state = wezterm.nerdfonts.cod_window
+    else
+      win_split_state = wezterm.nerdfonts.cod_terminal_tmux -- split window
+      for _, p in ipairs(tab:panes_with_info()) do
+        if p.is_zoomed and p.is_active then -- zoomed window
+          win_split_state = wezterm.nerdfonts.cod_screen_full
+        end
+      end
+    end
   end
 
   -- Left status (left of the tab line)
   window:set_left_status(wezterm.format({
     { Attribute = { Intensity = "Bold" } },
     { Foreground = { Color = stat_color } },
-    { Text = "  " },
-    { Text = wezterm.nerdfonts.md_leaf .. "  " .. stat },
+    { Background = { Color = stat_back_color } },
+    { Text = " " .. wezterm.nerdfonts.md_leaf .. " " .. stat },
+    { Foreground = { Color = stat_back_color } },
+    { Background = { Color = "#292c3c" } },
+    { Text = stat_seprator },
   }))
 
   -- Right Status
@@ -193,7 +207,7 @@ wezterm.on("update-status", function(window, pane)
     { Foreground = { Color = "#303446" } },
     { Background = { Color = "#ca9ee6" } },
     { Attribute = { Intensity = "Bold" } },
-    { Text = " " .. win_count .. "  " },
+    { Text = " " .. win_split_state .. "  " },
     "ResetAttributes",
     { Foreground = { Color = "#303446" } },
     { Background = { Color = "#ea999c" } },
