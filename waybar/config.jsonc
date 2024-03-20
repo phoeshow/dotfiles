@@ -88,8 +88,8 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": "󱋙",
-      "deactivated": "󰌪"
+      "activated": "󰅶",
+      "deactivated": "󰅶"
     }
   },
   "hyprland/submap": {
@@ -116,7 +116,7 @@
   },
   "disk": {
     "interval": 30,
-    "format": "{percentage_used}% 󰆼",
+    "format": "{percentage_free}% 󰆼",
     "path": "/"
   },
   "network": {

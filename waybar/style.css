@@ -90,7 +90,7 @@ tooltip label {
   color: @maroon;
 }
 #idle_inhibitor.deactivated {
-  color: @green;
+  color: @surface2;
 }
 #mode {
   background-color: @base;
