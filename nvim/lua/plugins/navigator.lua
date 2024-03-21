@@ -16,7 +16,7 @@ return {
     "knubie/vim-kitty-navigator",
     enabled = is_kitty,
     init = function()
-      vim.g.kitty_navigator_no_remap = 1
+      vim.g.kitty_navigator_no_mappings = 1
       vim.keymap.set({ "n", "t" }, "<A-h>", "<cmd>KittyNavigateLeft<cr>")
       vim.keymap.set({ "n", "t" }, "<A-j>", "<cmd>KittyNavigateDown<cr>")
       vim.keymap.set({ "n", "t" }, "<A-k>", "<cmd>KittyNavigateUp<cr>")
