@@ -1,4 +1,6 @@
 # pyright: reportMissingImports=false
+import os
+import subprocess
 from datetime import datetime
 from kitty.boss import get_boss
 from kitty.fast_data_types import Screen, add_timer, get_options
@@ -13,41 +15,52 @@ from kitty.tab_bar import (
     draw_title,
 )
 
+
+def get_os():
+    os_name = os.uname().sysname
+    if os_name == "Linux":
+        return "Linux"
+    elif os_name == 'Darwin':
+        return "Mac"
+    else:
+        return "Other"
+
+
 opts = get_options()
 icon_fg = as_rgb(color_as_int(opts.color2))
 icon_bg = as_rgb(color_as_int(opts.color0))
-# bat_text_color = as_rgb(color_as_int(opts.color2))
+bat_text_color = as_rgb(color_as_int(opts.color2))
 clock_color = as_rgb(color_as_int(opts.color2))
 date_color = as_rgb(color_as_int(opts.color4))
 SEPARATOR_SYMBOL, SOFT_SEPARATOR_SYMBOL = ("", "")
 RIGHT_MARGIN = 1
 REFRESH_TIME = 1
 ICON = " 󰌪 "
-# UNPLUGGED_ICONS = {
-#     10: "󰁺",
-#     20: "󰁻",
-#     30: "󰁼",
-#     40: "󰁽",
-#     50: "󰁾",
-#     60: "󰁿",
-#     70: "󰂀",
-#     80: "󰂁",
-#     90: "󰂂",
-#     100: "󰁹",
-# }
-# PLUGGED_ICONS = {
-#     1: "󰂄",
-# }
-# UNPLUGGED_COLORS = {
-#     15: as_rgb(color_as_int(opts.color1)),
-#     16: as_rgb(color_as_int(opts.color15)),
-# }
-# PLUGGED_COLORS = {
-#     15: as_rgb(color_as_int(opts.color1)),
-#     16: as_rgb(color_as_int(opts.color6)),
-#     99: as_rgb(color_as_int(opts.color6)),
-#     100: as_rgb(color_as_int(opts.color2)),
-# }
+UNPLUGGED_ICONS = {
+    10: "󰁺",
+    20: "󰁻",
+    30: "󰁼",
+    40: "󰁽",
+    50: "󰁾",
+    60: "󰁿",
+    70: "󰂀",
+    80: "󰂁",
+    90: "󰂂",
+    100: "󰁹",
+}
+PLUGGED_ICONS = {
+    1: "󰂄",
+}
+UNPLUGGED_COLORS = {
+    15: as_rgb(color_as_int(opts.color1)),
+    16: as_rgb(color_as_int(opts.color15)),
+}
+PLUGGED_COLORS = {
+    15: as_rgb(color_as_int(opts.color1)),
+    16: as_rgb(color_as_int(opts.color6)),
+    99: as_rgb(color_as_int(opts.color6)),
+    100: as_rgb(color_as_int(opts.color2)),
+}
 
 
 def _draw_icon(screen: Screen, index: int) -> int:
@@ -127,39 +140,44 @@ def _redraw_tab_bar(_):
         tm.mark_tab_bar_dirty()
 
 
-# def get_battery_cells() -> list:
-#     try:
-#         # with open("/sys/class/power_supply/BAT0/status", "r") as f:
-#         #     status = f.read()
-#         # with open("/sys/class/power_supply/BAT0/capacity", "r") as f:
-#         #     percent = int(f.read())
-#         battery = psutil.sensors_battery()
-#         plugged = battery.power_plugged
-#         percent = battery.percent
-#         if not plugged:
-#             # TODO: declare the lambda once and don't repeat the code
-#             icon_color = UNPLUGGED_COLORS[
-#                 min(UNPLUGGED_COLORS.keys(), key=lambda x: abs(x - percent))
-#             ]
-#             icon = UNPLUGGED_ICONS[
-#                 min(UNPLUGGED_ICONS.keys(), key=lambda x: abs(x - percent))
-#             ]
-#         else:
-#             icon_color = PLUGGED_COLORS[
-#                 min(PLUGGED_COLORS.keys(), key=lambda x: abs(x - percent))
-#             ]
-#             icon = PLUGGED_ICONS[
-#                 min(PLUGGED_ICONS.keys(), key=lambda x: abs(x - percent))
-#             ]
-#         percent_cell = (bat_text_color, str(percent) + "% ")
-#         icon_cell = (icon_color, icon)
-#         return [percent_cell, icon_cell]
-#     except:
-#         return []
+def get_battery_cells() -> list:
+    try:
+        current_os = get_os()
+        percent = 0
+
+        if current_os == 'Mac':
+            result = subprocess.run(
+                ["pmset", "-g", "batt"], capture_output=True, text=True)
+            output = result.stdout
+
+            # 解析输出获取电池百分比
+            for line in output.splitlines():
+                if "InternalBattery" in line:
+                    battery_info = line.split("\t")
+                    percent = int(battery_info[1].split(';')[0].strip())
+
+        elif current_os == 'Linux':
+            # with open("/sys/class/power_supply/BAT0/status", "r") as f:
+            #     status = f.read()
+            with open("/sys/class/power_supply/BAT0/capacity", "r") as f:
+                percent = int(f.read())
+
+        icon_color = PLUGGED_COLORS[
+            min(PLUGGED_COLORS.keys(), key=lambda x: abs(x - percent))
+        ]
+        icon = PLUGGED_ICONS[
+            min(PLUGGED_ICONS.keys(), key=lambda x: abs(x - percent))
+        ]
+        percent_cell = (bat_text_color, str(percent) + "% ")
+        icon_cell = (icon_color, icon)
+        return [percent_cell, icon_cell]
+    except:
+        return []
 
 
 timer_id = None
 right_status_length = -1
+
 
 def draw_tab(
     draw_data: DrawData,
@@ -202,4 +220,3 @@ def draw_tab(
         cells,
     )
     return screen.cursor.x
-
