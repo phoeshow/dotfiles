@@ -1,4 +1,3 @@
-# pyright: reportMissingImports=false
 import os
 import subprocess
 from datetime import datetime
@@ -16,49 +15,41 @@ from kitty.tab_bar import (
 )
 
 
-def get_os():
+def _get_os() -> str:
     os_name = os.uname().sysname
     if os_name == "Linux":
         return "Linux"
-    elif os_name == 'Darwin':
+    if os_name == 'Darwin':
         return "Mac"
-    else:
-        return "Other"
+    return "Other"
 
 
 opts = get_options()
 icon_fg = as_rgb(color_as_int(opts.color2))
 icon_bg = as_rgb(color_as_int(opts.color0))
-bat_text_color = as_rgb(color_as_int(opts.color2))
 clock_color = as_rgb(color_as_int(opts.color2))
 date_color = as_rgb(color_as_int(opts.color4))
 SEPARATOR_SYMBOL, SOFT_SEPARATOR_SYMBOL = ("", "")
 RIGHT_MARGIN = 1
-REFRESH_TIME = 1
+REFRESH_TIME = 60
 ICON = " 󰌪 "
-UNPLUGGED_ICONS = {
-    10: "󰁺",
-    20: "󰁻",
-    30: "󰁼",
-    40: "󰁽",
-    50: "󰁾",
-    60: "󰁿",
-    70: "󰂀",
-    80: "󰂁",
-    90: "󰂂",
-    100: "󰁹",
+BATTERY_ICON = {
+    10: "󰁺 ",
+    20: "󰁻 ",
+    30: "󰁼 ",
+    40: "󰁽 ",
+    50: "󰁾 ",
+    60: "󰁿 ",
+    70: "󰂀 ",
+    80: "󰂁 ",
+    90: "󰂂 ",
+    100: "󰁹 ",
 }
-PLUGGED_ICONS = {
-    1: "󰂄",
-}
-UNPLUGGED_COLORS = {
-    15: as_rgb(color_as_int(opts.color1)),
-    16: as_rgb(color_as_int(opts.color15)),
-}
-PLUGGED_COLORS = {
-    15: as_rgb(color_as_int(opts.color1)),
-    16: as_rgb(color_as_int(opts.color6)),
-    99: as_rgb(color_as_int(opts.color6)),
+BATTERY_COLOR = {
+    20: as_rgb(color_as_int(opts.color1)),
+    21: as_rgb(color_as_int(opts.color3)),
+    70: as_rgb(color_as_int(opts.color3)),
+    71: as_rgb(color_as_int(opts.color2)),
     100: as_rgb(color_as_int(opts.color2)),
 }
 
@@ -142,7 +133,7 @@ def _redraw_tab_bar(_):
 
 def get_battery_cells() -> list:
     try:
-        current_os = get_os()
+        current_os = _get_os()
         percent = 0
 
         if current_os == 'Mac':
@@ -151,26 +142,25 @@ def get_battery_cells() -> list:
             output = result.stdout
 
             # 解析输出获取电池百分比
+            # -InternalBattery-0 (id=6750307)	92%; discharging; (no estimate) present: true
             for line in output.splitlines():
                 if "InternalBattery" in line:
                     battery_info = line.split("\t")
-                    percent = int(battery_info[1].split(';')[0].strip())
+                    percent = int(battery_info[1].split(';')[0].strip("%"))
 
         elif current_os == 'Linux':
-            # with open("/sys/class/power_supply/BAT0/status", "r") as f:
-            #     status = f.read()
             with open("/sys/class/power_supply/BAT0/capacity", "r") as f:
                 percent = int(f.read())
 
-        icon_color = PLUGGED_COLORS[
-            min(PLUGGED_COLORS.keys(), key=lambda x: abs(x - percent))
+        icon_color = BATTERY_COLOR[
+            min(BATTERY_COLOR.keys(), key=lambda x: abs(x - percent))
         ]
-        icon = PLUGGED_ICONS[
-            min(PLUGGED_ICONS.keys(), key=lambda x: abs(x - percent))
+        icon = BATTERY_ICON[
+            min(BATTERY_ICON.keys(), key=lambda x: abs(x - percent))
         ]
-        percent_cell = (bat_text_color, str(percent) + "% ")
+        percent_cell = (icon_color, str(percent) + "%")
         icon_cell = (icon_color, icon)
-        return [percent_cell, icon_cell]
+        return [icon_cell, percent_cell]
     except:
         return []
 
@@ -195,8 +185,7 @@ def draw_tab(
         timer_id = add_timer(_redraw_tab_bar, REFRESH_TIME, True)
     clock = datetime.now().strftime(" %H:%M")
     date = datetime.now().strftime(" %Y-%m-%d")
-    # cells = get_battery_cells()
-    cells = []
+    cells = get_battery_cells()
     cells.append((clock_color, clock))
     cells.append((date_color, date))
     right_status_length = RIGHT_MARGIN
