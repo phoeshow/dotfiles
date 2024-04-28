@@ -1,10 +1,10 @@
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 30,
+  "height": 45,
   "margin-left": 8,
   "margin-right": 8,
-  "margin-top": 2,
+  "margin-top": 4,
   "margin-bottom": 0,
   // Choose the order of the modules
   "modules-left": [
@@ -17,7 +17,8 @@
   ],
   "modules-center": ["hyprland/submap"],
   "modules-right": [
-    // "mpris",
+    "mpris",
+    "custom/split",
     "pulseaudio",
     "custom/split",
     "network",
@@ -44,7 +45,7 @@
   "custom/wallpaper": {
     "format": "󰋷",
     "tooltip": false,
-    "on-click": "sh ~/.config/hypr/scripts/wallpaper.sh"
+    "on-click": "sh ~/.config/hypr/scripts/wallpaper.sh random"
   },
   "custom/applications": {
     "format": "󰣇",
@@ -58,22 +59,12 @@
   },
   "hyprland/workspaces": {
     "format": "[{id}]",
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
     "show-special": false,
     "on-click": "activate",
     "all-outputs": true,
-    // "format-icons": {
-    //   "1": "󰎦",
-    //   "2": "󰎩",
-    //   "3": "󰎬",
-    //   "4": "󰎮",
-    //   "5": "󰎰",
-    //   "6": "󰎵",
-    //   "7": "󰎸 ",
-    //   "8": "󰎻 ",
-    //   "9": "󰎾 ",
-    //   "focused": " ",
-    //   "default": " "
-    // },
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
@@ -98,7 +89,7 @@
     "tooltip": false
   },
   "tray": {
-    "icon-size": 16,
+    "icon-size": 20,
     "spacing": 6
   },
   "clock": {

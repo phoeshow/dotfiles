@@ -21,6 +21,9 @@ return {
         "css",
         "yaml",
         "bash",
+        "rasi",
+        "hyprlang",
+        "toml",
       },
       textobjects = {
         select = {
@@ -70,6 +73,18 @@ return {
       auto_install = true,
       autotag = {
         enable = true,
+      },
+    })
+
+    vim.filetype.add({
+      extension = { rasi = "rasi", rofi = "rasi", wofi = "rasi" },
+      filename = {
+        [".env"] = "dotenv",
+        ["vifmrc"] = "vim",
+      },
+      pattern = {
+        [".*/waybar/config"] = "jsonc",
+        [".*/hypr/.*%.conf"] = "hyprlang",
       },
     })
   end,

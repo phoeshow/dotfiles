@@ -18,12 +18,12 @@ toggle_mic() {
 
 increase_vol() {
   pamixer -i 2;
-  dunstify "Volume" -h int:value:$(pamixer --get-volume)
+  dunstify -h string:x-canonical-private-synchronous:audio "Volume" -h int:value:$(pamixer --get-volume)
 }
 
 decrease_vol() {
   pamixer -d 2;
-  dunstify "Volume" -h int:value:$(pamixer --get-volume)
+  dunstify -h string:x-canonical-private-synchronous:audio "Volume" -h int:value:$(pamixer --get-volume)
 }
 
 

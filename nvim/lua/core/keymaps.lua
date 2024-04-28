@@ -7,6 +7,10 @@ local map = vim.keymap.set
 
 local opt = { noremap = true, silent = true } -- 不会递归映射，不在命令行上回显
 
+local function keymap_desc(desc)
+  return { noremap = true, silent = true, desc = desc }
+end
+
 -- 取消掉F1 打开帮助的快捷键，这键盘老是按到
 -- 不过现在都映射到capslock键上了，误按的机会少很多了
 map({ "n", "v", "i" }, "<F1>", "", opt)
@@ -30,14 +34,14 @@ map("n", "-", "<C-x>", opt)
 -- map("n", "<A-k>", "<C-w>k", opt)
 -- map("n", "<A-l>", "<C-w>l", opt)
 -- Ctrl + 方向键 调整窗口大小
-map("n", "<C-right>", "<C-w>>", opt)
-map("n", "<C-left>", "<C-w><", opt)
-map("n", "<C-up>", "<C-w>+", opt)
-map("n", "<C-down>", "<C-w>-", opt)
+map("n", "<C-right>", "<C-w>>", keymap_desc("Resize window right"))
+map("n", "<C-left>", "<C-w><", keymap_desc("Resize window left"))
+map("n", "<C-up>", "<C-w>+", keymap_desc("Resize window up"))
+map("n", "<C-down>", "<C-w>-", keymap_desc("Resize window down"))
 
 -- buffer 切换
-map("n", "<C-h>", ":bprevious<cr>", opt)
-map("n", "<C-l>", ":bnext<cr>", opt)
+map("n", "<C-h>", ":bprevious<cr>", keymap_desc("Previous buffer"))
+map("n", "<C-l>", ":bnext<cr>", keymap_desc("Next buffer"))
 -- use mini.bufremove instead
 -- map("n", "<C-w>", ":bdelete!<cr>", opt) -- close tab
 

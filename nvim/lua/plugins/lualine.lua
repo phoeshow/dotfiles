@@ -141,25 +141,25 @@ return {
             ["niV"] = "󰄛 ",
             ["nt"] = "󰄛 ",
             ["ntT"] = "󰄛 ",
-            ["v"] = "󰩭 VISUAL ",
-            ["vs"] = "󰩭 VISUAL ",
-            ["V"] = "󰩭 V-LINE ",
-            ["Vs"] = "󰩭 V-LINE ",
-            ["\22"] = "󰩭 V-BLOCK ",
-            ["\22s"] = "󰩭 V-BLOCK ",
+            ["v"] = "󰩭 VISUAL",
+            ["vs"] = "󰩭 VISUAL",
+            ["V"] = "󰩭 V-LINE",
+            ["Vs"] = "󰩭 V-LINE",
+            ["\22"] = "󰩭 V-BLOCK",
+            ["\22s"] = "󰩭 V-BLOCK",
             ["s"] = "󰒉 ",
             ["S"] = "󰒉 S-LINE",
-            ["\19"] = "󰒉 S-BLOCK ",
-            ["i"] = "󰏪 INSERT ",
-            ["ic"] = "󰏪 INSERT ",
-            ["ix"] = "󰏪 INSERT ",
+            ["\19"] = "󰒉 S-BLOCK",
+            ["i"] = "󰏪 INSERT",
+            ["ic"] = "󰏪 INSERT",
+            ["ix"] = "󰏪 INSERT",
             ["R"] = "REPLACE",
             ["Rc"] = "REPLACE",
             ["Rx"] = "REPLACE",
             ["Rv"] = "V-REPLACE",
             ["Rvc"] = "V-REPLACE",
             ["Rvx"] = "V-REPLACE",
-            ["c"] = "󰆍 CMD ",
+            ["c"] = "󰆍 CMD",
             ["cv"] = "EX",
             ["ce"] = "EX",
             ["r"] = "REPLACE",
@@ -224,6 +224,13 @@ return {
           return { fg = mode_color[mode_code], gui = "bold" }
         end,
         padding = { left = 0, right = 1 },
+      })
+
+      -- filetype icon
+      ins_left({
+        "filetype",
+        colored = true,
+        icon_only = true,
       })
 
       ins_left({
