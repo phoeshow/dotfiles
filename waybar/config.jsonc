@@ -1,10 +1,10 @@
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 45,
-  "margin-left": 8,
-  "margin-right": 8,
-  "margin-top": 4,
+  "height": 30,
+  "margin-left": 6,
+  "margin-right": 6,
+  "margin-top": 2,
   "margin-bottom": 0,
   // Choose the order of the modules
   "modules-left": [
@@ -89,7 +89,7 @@
     "tooltip": false
   },
   "tray": {
-    "icon-size": 20,
+    "icon-size": 16,
     "spacing": 6
   },
   "clock": {
