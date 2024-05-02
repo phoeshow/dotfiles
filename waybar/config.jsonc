@@ -1,7 +1,7 @@
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 30,
+  "height": 36,
   "margin-left": 6,
   "margin-right": 6,
   "margin-top": 2,
@@ -89,7 +89,7 @@
     "tooltip": false
   },
   "tray": {
-    "icon-size": 16,
+    "icon-size": 22,
     "spacing": 6
   },
   "clock": {

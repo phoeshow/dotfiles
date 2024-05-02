@@ -4,12 +4,12 @@
     JetBrains Mono,
     monospace;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 window#waybar {
   background: linear-gradient(@base, @mantle);
-  border: 2px solid @surface2;
+  border: 4px solid @surface2;
   opacity: 0.9;
 }
 
