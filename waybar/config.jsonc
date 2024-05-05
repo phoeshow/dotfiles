@@ -33,19 +33,36 @@
     "custom/split",
     "tray",
     "custom/split",
-    "custom/wallpaper",
-    "idle_inhibitor",
-    "custom/power"
+    "group/system"
   ],
+  "group/system": {
+    "orientation": "horizontal",
+    "drawer": {
+      "duration": 500,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/power",
+      "custom/sys_monitor",
+      "custom/wallpaper",
+      "idle_inhibitor"
+    ]
+  },
+  "custom/sys_monitor": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "kitty --session ~/.system_monitor_session --title system-monitor"
+  },
   "custom/split": {
     "format": "|",
     "tooltip": false,
     "interval": "once"
   },
   "custom/wallpaper": {
-    "format": "󰋷",
+    "format": "",
     "tooltip": false,
-    "on-click": "sh ~/.config/hypr/scripts/wallpaper.sh random"
+    "on-click": "sh ~/.config/hypr/scripts/wallpaper.sh",
+    "on-click-right": "sh ~/.config/hypr/scripts/wallpaper.sh random"
   },
   "custom/applications": {
     "format": "󰣇",
@@ -103,11 +120,11 @@
     "format": "{usage}% "
   },
   "memory": {
-    "format": "{percentage}% 󰘚"
+    "format": "{percentage}% "
   },
   "disk": {
     "interval": 30,
-    "format": "{percentage_free}% 󰆼",
+    "format": "{percentage_free}% 󰋊",
     "path": "/"
   },
   "network": {

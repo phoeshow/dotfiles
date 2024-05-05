@@ -30,8 +30,13 @@ tooltip label {
 #idle_inhibitor,
 #custom-applications,
 #custom-power,
+#custom-sys_monitor,
 #custom-wallpaper {
   padding: 0 6px;
+}
+
+#custom-sys_monitor {
+  color: @yellow;
 }
 
 #custom-split {
@@ -43,7 +48,7 @@ tooltip label {
 }
 
 #custom-wallpaper {
-  color: @pink;
+  color: @mauve;
 }
 
 #custom-power {
