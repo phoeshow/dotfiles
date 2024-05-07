@@ -3,8 +3,8 @@
   "logo": {
     "type": "kitty-direct",
     "source": "~/.config/fastfetch/fox_girl.png",
-    "width": 28,
-    "height": 14
+    "width": 44,
+    "height": 22
   },
   "display": {
     "separator": "  "
