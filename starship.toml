@@ -24,6 +24,7 @@ $lua\
 [](fg:green)\
 $fill\
 [](fg:surface1)\
+$cmd_duration\
 $time\
 [](fg:surface1)\
 $line_break$character"""
@@ -165,6 +166,10 @@ format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
 symbol = ""
 style = "bg:surface0"
 format = '[[ $symbol( $context) ](fg:text bg:surface0)]($style)'
+
+[cmd_duration]
+style = "bg:surface1"
+format = '[[ $duration ](fg:yellow bg:surface1)]($style)'
 
 [time]
 disabled = false
