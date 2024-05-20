@@ -286,28 +286,38 @@ return {
 
       ins_right({
         function()
-          local msg = "󰌸 "
-          local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-          local clients = vim.lsp.get_active_clients()
-          if next(clients) == nil then
-            return msg
+          local clients = vim.lsp.get_clients()
+          if #clients ~= 0 then
+            return "󰒓"
+          else
+            return "󱏎"
           end
-          for _, client in ipairs(clients) do
-            local filetypes = client.config.filetypes
-            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-              -- return client.name
-              return "󰌷 "
-            end
-          end
-          return msg
         end,
-        icon = " LSP:",
         color = { fg = colors.flamingo },
       })
 
       ins_right({
-        "location",
+        function()
+          local ok, lint = pcall(require, "lint")
+
+          if not ok then
+            return ""
+          end
+
+          local linters = lint.get_running()
+
+          if #linters == 0 then
+            return "󰦕"
+          end
+
+          return "󱉶 " .. table.concat(linters, ", ")
+        end,
         color = { fg = colors.maroon },
+      })
+
+      ins_right({
+        "location",
+        color = { fg = colors.mauve },
         cond = conditions.hide_in_width,
       })
 

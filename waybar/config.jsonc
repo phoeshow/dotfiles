@@ -1,7 +1,7 @@
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 42,
+  "height": 24,
   "margin-left": 6,
   "margin-right": 6,
   "margin-top": 2,
@@ -13,7 +13,7 @@
     "custom/split",
     "hyprland/workspaces",
     "custom/split",
-    "hyprland/window"
+    "hyprland/window",
   ],
   "modules-center": ["hyprland/submap"],
   "modules-right": [
@@ -33,106 +33,119 @@
     "custom/split",
     "tray",
     "custom/split",
-    "group/system"
+    "group/system",
   ],
   "group/system": {
     "orientation": "horizontal",
     "drawer": {
       "duration": 500,
-      "transition-left-to-right": false
+      "transition-left-to-right": false,
     },
     "modules": [
       "custom/power",
+      "custom/update_system",
       "custom/sys_monitor",
       "custom/wallpaper",
-      "idle_inhibitor"
-    ]
+      "idle_inhibitor",
+      "custom/picker",
+    ],
+  },
+  "custom/update_system": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/check_update.sh",
+    "interval": 3600,
+    "on-click": "kitty yay",
+  },
+  "custom/picker": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "hyprpicker -a -f hex",
   },
   "custom/sys_monitor": {
     "format": "",
     "tooltip": false,
-    "on-click": "kitty --session ~/.system_monitor_session --title system-monitor"
+    "on-click": "kitty --session ~/.system_monitor_session --title system-monitor",
   },
   "custom/split": {
     "format": "|",
     "tooltip": false,
-    "interval": "once"
+    "interval": "once",
   },
   "custom/wallpaper": {
     "format": "",
     "tooltip": false,
     "on-click": "sh ~/.config/hypr/scripts/wallpaper.sh",
-    "on-click-right": "sh ~/.config/hypr/scripts/wallpaper.sh random"
+    "on-click-right": "sh ~/.config/hypr/scripts/wallpaper.sh random",
   },
   "custom/applications": {
     "format": "󰣇",
     "on-click": "sh ~/.config/hypr/scripts/wofi.sh",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/power": {
     "format": "",
     "on-click": "sh ~/.config/hypr/scripts/wofipower.sh",
-    "tooltip": false
+    "tooltip": false,
   },
   "hyprland/workspaces": {
     "format": "[{id}]",
     "persistent-workspaces": {
-      "*": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      "*": [1, 2, 3, 4, 5, 6, 7, 8, 9],
     },
     "show-special": false,
     "on-click": "activate",
     "all-outputs": true,
     "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1"
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
   },
   "hyprland/window": {
     "format": "{title}",
     "rewrite": {
       "(.*) - wezterm": " $1",
       "(.*) — Mozilla Firefox": " $1",
-      "NetEase Cloud Music Gtk4": " NetEase Cloud Music"
-    }
+      "NetEase Cloud Music Gtk4": " NetEase Cloud Music",
+    },
   },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
       "activated": "󰅶",
-      "deactivated": "󰅶"
-    }
+      "deactivated": "󰅶",
+    },
   },
   "hyprland/submap": {
     "format": "{}",
     "max-length": 8,
-    "tooltip": false
+    "tooltip": false,
   },
   "tray": {
-    "icon-size": 22,
-    "spacing": 6
+    "icon-size": 18,
+    "spacing": 6,
   },
   "clock": {
     "format": "{:%m-%d %a %H:%M} ",
     "locale": "C",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     // "format-alt": "{:%Y-%m-%d  %a} 󰃭"
   },
   "cpu": {
     "interval": 10,
-    "format": "{usage}% "
+    "format": "{usage}% ",
   },
   "memory": {
-    "format": "{percentage}% "
+    "format": "{percentage}% ",
   },
   "disk": {
     "interval": 30,
     "format": "{percentage_free}% 󰋊",
-    "path": "/"
+    "path": "/",
   },
   "network": {
     "tooltip-format": "{ifname} via {gwaddr}",
     "format-disconnected": "Disconnected ⚠",
     "format-alt": "{ifname}: {essid}/{ipaddr}/{cidr}",
     "format": " {bandwidthUpBytes}  {bandwidthDownBytes} ",
-    "interval": 5
+    "interval": 5,
   },
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
@@ -140,10 +153,10 @@
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {
-      "default": ["", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"]
+      "default": ["", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
     },
     "on-click": "pavucontrol -t 3",
-    "on-click-right": "pavucontrol -t 4"
+    "on-click-right": "pavucontrol -t 4",
   },
   "mpris": {
     "format": "{status_icon} {dynamic}",
@@ -152,8 +165,8 @@
     "status-icons": {
       "paused": "",
       "playing": "",
-      "stopped": ""
+      "stopped": "",
     },
-    "ignored-players": ["firefox"]
-  }
+    "ignored-players": ["firefox"],
+  },
 }

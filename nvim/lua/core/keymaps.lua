@@ -61,5 +61,10 @@ map("v", "K", ":move '<-2<CR>gv-gv", opt)
 -- 取消高亮
 map("n", "<leader>nh", ":nohl<CR>", opt)
 
+-- inlay_hint
+map("n", "<leader>lh", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, keymap_desc("Toggle inlay hint"))
+
 -- file explore
 -- map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opt)

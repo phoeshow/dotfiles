@@ -9,20 +9,18 @@ wofi_command="wofi --show dmenu --prompt choose... --cache-file=/dev/null --hide
 
 menu(){
   for i in ${!PICS[@]}; do
-    printf "${PICS[$i]}\n"
+    printf "img:${DIR}/${PICS[$i]}:text:${PICS[$i]}\n"
   done
 }
 
 
 main() {
-    choice=$(menu | ${wofi_command})
+    choice=$(menu | ${wofi_command} | cut -d: -f2)
 
     # no choice case
     if [[ -z $choice ]]; then return; fi
 
-    real_wallpaper_path=${DIR}/${choice}
-
-    echo ${real_wallpaper_path} > $HOME/.config/wallpaperpath
+    echo ${choice} > $HOME/.config/wallpaperpath
 
     set_wallpaper
 }
@@ -38,10 +36,7 @@ set_wallpaper() {
     wallpaperpath=$(<$HOME/.config/wallpaperpath)
   fi
 
-  if pidof swaybg > /dev/null; then
-    killall swaybg
-  fi
-  swaybg -m fill -i ${wallpaperpath}
+  swww img ${wallpaperpath} --transition-fps 60 --transition-type center --transition-duration 2
 
   exit 0
 }
@@ -52,15 +47,11 @@ random_wallpaper() {
   local random_index=$((RANDOM % ${#image_files[@]}))
   local random_image="${image_files[$random_index]}"
 
-  if pidof swaybg > /dev/null; then
-    killall swaybg
-  fi
 
   echo ${random_image} > $HOME/.config/wallpaperpath
 
-  swaybg -m fill -i ${random_image}
+  set_wallpaper
 
-  exit 0
 }
 
 if [ $1 == "random" ]; then

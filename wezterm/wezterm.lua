@@ -20,7 +20,7 @@ local function platform()
 end
 
 if platform() == "Linux" then
-  config.font_size = 12
+  config.font_size = 16
 else
   config.font_size = 16
 end

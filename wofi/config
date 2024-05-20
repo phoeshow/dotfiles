@@ -5,11 +5,11 @@ show=drun
 prompt=Apps
 normal_window=true
 layer=overlay
-term=alacritty
-columns=2
+term=kitty
+columns=1
 
 ## Geometry
-width=30%
+width=20%
 height=30%
 location=top_left
 orientation=vertical
@@ -20,7 +20,7 @@ dynamic_lines=false
 ## Images
 allow_markup=true
 allow_images=true
-image_size=24
+image_size=64
 
 ## Search
 exec_search=false
