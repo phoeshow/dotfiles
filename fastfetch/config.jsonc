@@ -4,117 +4,117 @@
     "type": "kitty-direct",
     "source": "~/.config/fastfetch/fox_girl.png",
     "width": 44,
-    "height": 22
+    "height": 22,
   },
   "display": {
-    "separator": "  "
+    "separator": " ",
   },
   "modules": [
     {
       "type": "custom", // HardwareStart
-      "format": "┌─────────── \u001b[1mHardware Information\u001b[0m ───────────┐" // `\u001b` is `\033`, or `\e`
+      "format": "┌─\u001b[36;1mHardware Information", // `\u001b` is `\033`, or `\e`
     },
     {
       "type": "cpu",
       "keyColor": "green",
-      "key": "  󰻠"
+      "key": "├─󰻠 ",
     },
     {
       "type": "gpu",
       "keyColor": "green",
-      "key": "  󰍛"
+      "key": "├─󰍛 ",
     },
     {
       "type": "memory",
       "keyColor": "green",
-      "key": "  "
+      "key": "├─ ",
     },
     {
       "type": "disk",
       "keyColor": "green",
-      "key": "  󰋊"
+      "key": "├─󰋊 ",
     },
     {
       "type": "display",
       "keyColor": "green",
-      "key": "  󰍹"
+      "key": "├─󰍹 ",
     },
     {
       "type": "custom", // SoftwareStart
-      "format": "├─────────── \u001b[1mSoftware Information\u001b[0m ───────────┤"
+      "format": "├─\u001b[35;1mSoftware Information",
     },
     {
       "type": "title",
-      "key": "  ",
+      "key": "├─ ",
       "keyColor": "yellow",
-      "format": "{1}@{2}"
+      "format": "{1}@{2}",
     },
     {
       "type": "os",
       "keyColor": "yellow",
-      "key": "  " // Just get your distro's logo off nerdfonts.com
+      "key": "├─ ", // Just get your distro's logo off nerdfonts.com
     },
     {
       "type": "kernel",
-      "key": "  ",
+      "key": "├─ ",
       "keyColor": "yellow",
-      "format": "{1} {2}"
+      "format": "{1} {2}",
     },
     {
       "type": "de",
       "keyColor": "yellow",
-      "key": "  "
+      "key": "├─ ",
     },
     {
       "type": "wm",
       "keyColor": "yellow",
-      "key": "  "
+      "key": "├─ ",
     },
     {
       "type": "shell",
       "keyColor": "yellow",
-      "key": "  "
+      "key": "├─ ",
     },
     {
       "type": "terminal",
       "keyColor": "yellow",
-      "key": "  "
+      "key": "├─ ",
     },
     {
       "type": "packages",
       "keyColor": "yellow",
-      "key": "  󰏖"
+      "key": "├─󰏖 ",
     },
     {
       "type": "uptime",
       "keyColor": "yellow",
-      "key": "  󰅐"
+      "key": "├─󰅐 ",
     },
     {
       "type": "localip",
       "keyColor": "yellow",
-      "key": "  󰩟",
-      "compact": true
+      "key": "├─󰩟 ",
+      "compact": true,
     },
     {
       "type": "wifi",
       "keyColor": "yellow",
-      "key": "  ",
-      "format": "{4}" // ssid
+      "key": "├─ ",
+      "format": "{4}", // ssid
     },
     {
       "type": "locale",
       "keyColor": "yellow",
-      "key": "  "
+      "key": "├─ ",
     },
-    {
-      "type": "custom", // InformationEnd
-      "format": "└────────────────────────────────────────────┘"
-    },
+    //{
+    //  "type": "custom", // InformationEnd
+    //  "format": "└────────────────────────────────────────────┘",
+    //},
     {
       "type": "colors",
       "paddingLeft": 2,
-      "symbol": "square"
-    }
-  ]
+      "symbol": "square",
+    },
+  ],
 }

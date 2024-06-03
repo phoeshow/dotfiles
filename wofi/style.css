@@ -8,7 +8,7 @@
 }
 
 #window {
-  background-color: rgba(48, 52, 70, 0.8);
+  background-color: rgba(48, 52, 70, 1);
 }
 
 #outer-box {
@@ -49,11 +49,11 @@
 
 #entry {
   padding: 3px;
+  border-radius: 0;
 }
 
 #entry:selected {
-  background: linear-gradient(90deg, #ef9f76, #e5c890);
-  border-radius: 0;
+  background-color: #ef9f76;
 }
 
 #unselected {

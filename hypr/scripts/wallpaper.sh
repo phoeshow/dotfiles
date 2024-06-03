@@ -5,7 +5,7 @@ DIR=$HOME/Pictures/wallpapers
 
 PICS=($(ls ${DIR} | grep -e ".jpg$" -e ".jpeg$" -e ".png$"))
 
-wofi_command="wofi --show dmenu --prompt choose... --cache-file=/dev/null --hide-scroll --no-actions --matching=fuzzy"
+wofi_command="wofi --show dmenu --prompt choose... --cache-file=/dev/null --hide-scroll --no-actions -i"
 
 menu(){
   for i in ${!PICS[@]}; do

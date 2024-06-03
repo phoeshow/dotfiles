@@ -1,14 +1,13 @@
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 24,
+  "height": 20,
   "margin-left": 6,
   "margin-right": 6,
   "margin-top": 2,
   "margin-bottom": 0,
   // Choose the order of the modules
   "modules-left": [
-    // "idle_inhibitor",
     "custom/applications",
     "custom/split",
     "hyprland/workspaces",
@@ -24,11 +23,9 @@
     "network",
     "custom/split",
     "cpu",
-    // "temperature",
     "memory",
     "disk",
     "custom/split",
-    // "keyboard-state",
     "clock",
     "custom/split",
     "tray",
@@ -43,19 +40,18 @@
     },
     "modules": [
       "custom/power",
-      "custom/update_system",
       "custom/sys_monitor",
       "custom/wallpaper",
       "idle_inhibitor",
       "custom/picker",
     ],
   },
-  "custom/update_system": {
-    "format": "{}",
-    "exec": "~/.config/waybar/scripts/check_update.sh",
-    "interval": 3600,
-    "on-click": "kitty yay",
-  },
+  //"custom/update_system": {
+  //  "format": "{}",
+  //  "exec": "~/.config/waybar/scripts/check_update.sh",
+  //  "interval": 3600,
+  //  "on-click": "kitty yay",
+  //},
   "custom/picker": {
     "format": "",
     "tooltip": false,
@@ -101,7 +97,6 @@
   "hyprland/window": {
     "format": "{title}",
     "rewrite": {
-      "(.*) - wezterm": " $1",
       "(.*) — Mozilla Firefox": " $1",
       "NetEase Cloud Music Gtk4": " NetEase Cloud Music",
     },
