@@ -51,6 +51,10 @@ alias ll="eza -l --git --icons=auto"
 alias la="eza -l -a --git --icons=auto"
 alias grep="grep --color=auto"
 
+# man page
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"

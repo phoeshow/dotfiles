@@ -2,15 +2,11 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](blue)\
 $os\
 $username\
-[](bg:teal fg:blue)\
 $directory\
-[](fg:teal bg:peach)\
 $git_branch\
 $git_status\
-[](fg:peach bg:green)\
 $c\
 $rust\
 $golang\
@@ -21,12 +17,9 @@ $kotlin\
 $haskell\
 $python\
 $lua\
-[](fg:green)\
 $fill\
-[](fg:surface1)\
 $cmd_duration\
 $time\
-[](fg:surface1)\
 $line_break$character"""
 
 palette = 'catppuccin_frappe'
@@ -60,7 +53,7 @@ mantle = "#292c3c"
 crust = "#232634"
 [os]
 disabled = false
-style = "bg:blue fg:base"
+style="bold blue"
 
 [os.symbols]
 Windows = "󰍲 "
@@ -85,14 +78,14 @@ RedHatEnterprise = "󱄛 "
 
 [username]
 show_always = true
-style_user = "bold bg:blue fg:base"
-style_root = "bold bg:blue fg:base"
-format = '[ $user ]($style)'
+style_user = "bold surface2"
+style_root = "bold red"
+format = ' [$user]($style)'
 
 [directory]
-style = "bold fg:base bg:teal"
-format = "[ $path ]($style)"
-truncation_length = 3
+style = "bold sky"
+format = " [$path]($style)"
+truncation_length = 5
 truncation_symbol = "…/"
 
 [directory.substitutions]
@@ -105,12 +98,11 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:peach"
-format = '[[ $symbol $branch ](bold fg:base bg:peach)]($style)'
+style = "bold peach"
+format = '[ $symbol $branch(:$remote_branch)]($style)'
 
 [git_status]
-style = "bg:peach"
-format = '[[($all_status$ahead_behind )](bold fg:base bg:peach)]($style)'
+style="bold yellow"
 
 [nodejs]
 symbol = ""
@@ -118,7 +110,7 @@ style = "bg:green"
 format = '[[ $symbol( $version) ](bold fg:base bg:green)]($style)'
 
 [c]
-symbol = " "
+symbol = ""
 style = "bg:green"
 format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
 
