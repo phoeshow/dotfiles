@@ -46,6 +46,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
+alias l="eza --icons=auto"
 alias ls="eza --icons=auto"
 alias ll="eza -l --git --icons=auto"
 alias la="eza -l -a --git --icons=auto"
@@ -54,6 +55,9 @@ alias grep="grep --color=auto"
 # man page
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
+
+# locale
+export LANG="en_US.utf8"
 
 # Shell integrations
 eval "$(fzf --zsh)"

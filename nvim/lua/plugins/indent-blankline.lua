@@ -6,11 +6,11 @@ return {
     config = function()
       require("ibl").setup({
         indent = {
-          char = "╎",
+          char = "┆",
         },
         scope = {
           enabled = false,
-          char = "╎",
+          char = "┆",
           show_start = true,
           show_end = true,
         },
@@ -35,7 +35,7 @@ return {
           border = "both",
           try_as_border = true,
         },
-        symbol = "╎",
+        symbol = "┆",
       })
       -- Disable for certain filetypes
       vim.api.nvim_create_autocmd({ "FileType" }, {

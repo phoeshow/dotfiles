@@ -107,57 +107,52 @@ style="bold yellow"
 [nodejs]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](bold fg:base bg:green)]($style)'
+format = '[ $symbol( $version) ]($style)'
 
 [c]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
+style = "bold green"
+format = '[ $symbol( $version) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
+style = "bold green"
+format = '[ $symbol( $version) ]($style)'
 
 [golang]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
+style = "bold green"
+format = '[ $symbol( $version) ]($style)'
 
 [php]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
+style = "bold green"
+format = '[ $symbol( $version) ]($style)'
 
 [java]
 symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
+style = "bold green"
+format = '[ $symbol( $version) ]($style)'
 
 [kotlin]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
+style = "bold green"
+format = '[ $symbol( $version) ]($style)'
 
 [haskell]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
+style = "bold green"
+format = '[ $symbol( $version) ]($style)'
 
 [python]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
+style = "bold green"
+format = '[ $symbol( $version) ]($style)'
 
 [lua]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:base bg:green)]($style)'
-
-[docker_context]
-symbol = ""
-style = "bg:surface0"
-format = '[[ $symbol( $context) ](fg:text bg:surface0)]($style)'
+style = "bold green"
+format = '[ $symbol( $version) ]($style)'
 
 [cmd_duration]
 style = "bg:surface1"
@@ -173,7 +168,7 @@ format = '[[  $time ](fg:text bg:surface1)]($style)'
 disabled = false
 
 [fill]
-symbol = "─"
+symbol = " "
 
 [character]
 disabled = false
