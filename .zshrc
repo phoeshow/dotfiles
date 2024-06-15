@@ -56,9 +56,6 @@ alias grep="grep --color=auto"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
-# locale
-export LANG="en_US.utf8"
-
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"

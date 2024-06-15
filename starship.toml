@@ -7,14 +7,9 @@ $username\
 $directory\
 $git_branch\
 $git_status\
-$c\
 $rust\
 $golang\
 $nodejs\
-$php\
-$java\
-$kotlin\
-$haskell\
 $python\
 $lua\
 $fill\
@@ -106,11 +101,6 @@ style="bold yellow"
 
 [nodejs]
 symbol = ""
-style = "bg:green"
-format = '[ $symbol( $version) ]($style)'
-
-[c]
-symbol = ""
 style = "bold green"
 format = '[ $symbol( $version) ]($style)'
 
@@ -121,26 +111,6 @@ format = '[ $symbol( $version) ]($style)'
 
 [golang]
 symbol = ""
-style = "bold green"
-format = '[ $symbol( $version) ]($style)'
-
-[php]
-symbol = ""
-style = "bold green"
-format = '[ $symbol( $version) ]($style)'
-
-[java]
-symbol = " "
-style = "bold green"
-format = '[ $symbol( $version) ]($style)'
-
-[kotlin]
-symbol = ""
-style = "bold green"
-format = '[ $symbol( $version) ]($style)'
-
-[haskell]
-symbol = ""
 style = "bold green"
 format = '[ $symbol( $version) ]($style)'
 
@@ -172,8 +142,8 @@ symbol = " "
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:green)'
-error_symbol = '[](bold fg:red)'
+success_symbol = '[󰞷](bold fg:green)'
+error_symbol = '[󰞷](bold fg:red)'
 vimcmd_symbol = '[](bold fg:green)'
 vimcmd_replace_one_symbol = '[](bold fg:pink)'
 vimcmd_replace_symbol = '[](bold fg:pink)'
