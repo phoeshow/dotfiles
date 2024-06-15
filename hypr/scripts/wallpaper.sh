@@ -57,6 +57,7 @@ random_wallpaper() {
 if [ $1 == "random" ]; then
   random_wallpaper
 elif [ $1 == "init" ]; then
+  sleep 1
   set_wallpaper
 else
   if pidof wofi >/dev/null; then
