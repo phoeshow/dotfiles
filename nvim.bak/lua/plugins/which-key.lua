@@ -31,7 +31,6 @@ return {
           name = "Lsp",
           r = { "<cmd>Lspsaga rename<cr>", "Rename" },
           a = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
-          -- o = { "<cmd>Lspsaga outline<cr>", "Document Symbols" },
         },
       },
     })

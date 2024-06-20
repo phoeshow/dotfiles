@@ -62,6 +62,7 @@ return {
         options = {
           component_separators = "",
           section_separators = { left = "" },
+          globalstatus = true,
           theme = {
             normal = {
               a = { fg = colors.base, bg = colors.green, gui = "bold" },

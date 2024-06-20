@@ -6,7 +6,7 @@ return {
   keys = {
     {
       -- Customize or remove this keymap to your liking
-      "<leader>fm",
+      "<leader>lf",
       function()
         require("conform").format({ async = true, lsp_fallback = true })
       end,

@@ -82,6 +82,7 @@ opt.termguicolors = true -- 开启真彩色，丰富样式配置
 opt.cmdheight = 0 -- 命令行高度1行
 opt.showtabline = 2 -- 何时显示带有标签页标签的行 0:永远不显示，1：至少两个标签时显示，2：永远显示
 opt.showmode = false
+opt.laststatus = 3 -- 能够让lualine只显示一个状态行
 
 -- 备份
 opt.backup = false -- 关闭备份文件
