@@ -11,6 +11,11 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- dap
+    { import = "lazyvim.plugins.extras.dap.core" },
+    -- extras formatting
+    { import = "lazyvim.plugins.extras.linting.eslint" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
     -- extras lang
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
@@ -21,6 +26,10 @@ require("lazy").setup({
 
     -- extras ui
     { import = "lazyvim.plugins.extras.ui.mini-indentscope" },
+    { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+
+    -- exitor
+    { import = "lazyvim.plugins.extras.editor.outline" },
 
     -- import/override with your plugins
     { import = "plugins" },
