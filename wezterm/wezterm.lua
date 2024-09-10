@@ -20,14 +20,17 @@ local function platform()
 end
 
 if platform() == "Linux" then
-  config.font_size = 10.5
+  config.font_size = 16
 else
   config.font_size = 16
 end
 
 config.color_scheme = "Catppuccin Frappe"
 config.font = wezterm.font_with_fallback({
-  "Rec Mono Semicasual",
+  {
+    family = "Rec Mono Semicasual",
+    weight = "Regular",
+  },
   "Noto Sans Mono CJK SC",
 })
 config.window_background_opacity = 0.95
@@ -96,7 +99,6 @@ config.leader = {
 
 config.keys = {
   { key = "b", mods = "LEADER|CTRL", action = act.SendKey({ key = "b", mods = "CTRL" }) },
-  { key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
   { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
   { key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
   { key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
@@ -104,10 +106,10 @@ config.keys = {
   { key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
   { key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-  bind_if(is_outside_vim, "h", "ALT", act.ActivatePaneDirection("Left")),
-  bind_if(is_outside_vim, "l", "ALT", act.ActivatePaneDirection("Right")),
-  bind_if(is_outside_vim, "j", "ALT", act.ActivatePaneDirection("Down")),
-  bind_if(is_outside_vim, "k", "ALT", act.ActivatePaneDirection("Up")),
+  bind_if(is_outside_vim, "h", "CTRL", act.ActivatePaneDirection("Left")),
+  bind_if(is_outside_vim, "l", "CTRL", act.ActivatePaneDirection("Right")),
+  bind_if(is_outside_vim, "j", "CTRL", act.ActivatePaneDirection("Down")),
+  bind_if(is_outside_vim, "k", "CTRL", act.ActivatePaneDirection("Up")),
   { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
   { key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
   { key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
