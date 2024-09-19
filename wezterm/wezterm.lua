@@ -20,7 +20,7 @@ local function platform()
 end
 
 if platform() == "Linux" then
-  config.font_size = 16
+  config.font_size = 10.5
 else
   config.font_size = 16
 end
@@ -43,7 +43,7 @@ config.window_close_confirmation = "AlwaysPrompt"
 config.disable_default_key_bindings = true
 config.adjust_window_size_when_changing_font_size = false
 -- wait fix on wayland
-config.enable_wayland = false
+-- config.enable_wayland = false
 
 config.window_padding = {
   top = 0,
