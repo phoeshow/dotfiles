@@ -1,3 +1,4 @@
+fastfetch
 
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled

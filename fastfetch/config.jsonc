@@ -12,7 +12,12 @@
   "modules": [
     {
       "type": "custom", // HardwareStart
-      "format": "┌─\u001b[36;1mHardware Information", // `\u001b` is `\033`, or `\e`
+      "format": "  \u001b[36;1mHardware Information", // `\u001b` is `\033`, or `\e`
+    },
+
+    {
+      "type": "custom", // InformationEnd
+      "format": "┌────────────────────────────────────────────┐",
     },
     {
       "type": "cpu",
@@ -34,21 +39,30 @@
       "keyColor": "green",
       "key": "├─󰋊 ",
     },
+    // {
+    //   "type": "display",
+    //   "keyColor": "green",
+    //   "key": "├─󰍹 ",
+    // },
+    //
     {
-      "type": "display",
-      "keyColor": "green",
-      "key": "├─󰍹 ",
+      "type": "custom", // InformationEnd
+      "format": "└────────────────────────────────────────────┘",
     },
     {
       "type": "custom", // SoftwareStart
-      "format": "├─\u001b[35;1mSoftware Information",
+      "format": "  \u001b[35;1mSoftware Information",
     },
     {
-      "type": "title",
-      "key": "├─ ",
-      "keyColor": "yellow",
-      "format": "{1}@{2}",
+      "type": "custom", // InformationEnd
+      "format": "┌────────────────────────────────────────────┐",
     },
+    // {
+    //   "type": "title",
+    //   "key": "├─ ",
+    //   "keyColor": "yellow",
+    //   "format": "{1}@{2}",
+    // },
     {
       "type": "os",
       "keyColor": "yellow",
@@ -70,11 +84,11 @@
       "keyColor": "yellow",
       "key": "├─ ",
     },
-    {
-      "type": "shell",
-      "keyColor": "yellow",
-      "key": "├─ ",
-    },
+    // {
+    //   "type": "shell",
+    //   "keyColor": "yellow",
+    //   "key": "├─ ",
+    // },
     {
       "type": "terminal",
       "keyColor": "yellow",
@@ -90,31 +104,31 @@
       "keyColor": "yellow",
       "key": "├─󰅐 ",
     },
+    // {
+    //   "type": "localip",
+    //   "keyColor": "yellow",
+    //   "key": "├─󰩟 ",
+    //   "compact": true,
+    // },
+    // {
+    //   "type": "wifi",
+    //   "keyColor": "yellow",
+    //   "key": "├─ ",
+    //   "format": "{4}", // ssid
+    // },
+    // {
+    //   "type": "locale",
+    //   "keyColor": "yellow",
+    //   "key": "├─ ",
+    // },
     {
-      "type": "localip",
-      "keyColor": "yellow",
-      "key": "├─󰩟 ",
-      "compact": true,
+      "type": "custom", // InformationEnd
+      "format": "└────────────────────────────────────────────┘",
     },
-    {
-      "type": "wifi",
-      "keyColor": "yellow",
-      "key": "├─ ",
-      "format": "{4}", // ssid
-    },
-    {
-      "type": "locale",
-      "keyColor": "yellow",
-      "key": "├─ ",
-    },
-    //{
-    //  "type": "custom", // InformationEnd
-    //  "format": "└────────────────────────────────────────────┘",
-    //},
     {
       "type": "colors",
       "paddingLeft": 2,
-      "symbol": "square",
+      "symbol": "circle",
     },
   ],
 }
