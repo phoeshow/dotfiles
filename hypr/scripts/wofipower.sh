@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 wofi_command="wofi --show dmenu \
 			--prompt choose... \
 			--cache-file=/dev/null \
@@ -9,14 +8,14 @@ wofi_command="wofi --show dmenu \
 
 entries=$(echo -e " Poweroff\n Reboot\n Suspend\n Lock\n Logout" | $wofi_command -i --dmenu | awk '{print tolower($2)}')
 
-case $entries in 
-    poweroff|reboot|suspend)
-        systemctl $entries
-        ;;
-    lock)
-        hyprlock
-        ;;
-    logout)
-        hyprctl dispatch exit 0
-        ;;
+case $entries in
+poweroff | reboot | suspend)
+  systemctl $entries
+  ;;
+lock)
+  hyprlock
+  ;;
+logout)
+  hyprctl dispatch exit 0
+  ;;
 esac
