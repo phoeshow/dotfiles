@@ -111,7 +111,7 @@ return {
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- Hover
-          map('gh', vim.lsp.buf.hover, 'Hover')
+          map('K', vim.lsp.buf.hover, 'Hover')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -217,8 +217,13 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        -- code formatter
         'stylua', -- Used to format Lua code
         'prettierd', -- Used to format typescript, javascript
+        -- linter
+        'markdownlint', -- Used to lint markdown
+        'eslint_d', -- Used to lint js/ts/svelte
+        'pylint', -- Used to lint python
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
