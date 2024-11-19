@@ -61,6 +61,9 @@ alias grep="grep --color=auto"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
+# Editor
+export EDITOR="nvim"
+
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
