@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COUNT=`yay -Qu | wc -l`
+COUNT=`pacman -Qu | wc -l`
 
 if [[ "$COUNT" == "0" ]]
 then
@@ -8,5 +8,3 @@ then
 else
   echo " $COUNT"
 fi
-
-exit 0

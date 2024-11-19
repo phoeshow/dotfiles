@@ -16,6 +16,7 @@
   ],
   "modules-center": ["hyprland/submap"],
   "modules-right": [
+    "custom/update_system",
     "mpris",
     "custom/split",
     "pulseaudio",
@@ -44,18 +45,26 @@
       "custom/wallpaper",
       "idle_inhibitor",
       "custom/picker",
+      "custom/screenshot"
     ],
   },
-  //"custom/update_system": {
-  //  "format": "{}",
-  //  "exec": "~/.config/waybar/scripts/check_update.sh",
-  //  "interval": 3600,
-  //  "on-click": "kitty yay",
-  //},
+  "custom/update_system": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/check_update.sh",
+    "interval": 3600,
+    "on-click": "kitty yay; pkill -SIGRTMIN+8 waybar",
+    "signal": 8,
+    "exec-if": "exit 0"
+  },
   "custom/picker": {
     "format": "",
     "tooltip": false,
     "on-click": "hyprpicker -a -f hex",
+  },
+  "custom/screenshot": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "grim -s 1 -g \"$(slurp)\" - | swappy -f -"
   },
   "custom/sys_monitor": {
     "format": "",

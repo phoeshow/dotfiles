@@ -32,14 +32,18 @@ tooltip label {
 #custom-power,
 #custom-sys_monitor,
 #custom-picker,
-/*#custom-update_system,*/
-#custom-wallpaper {
+#custom-wallpaper,
+#custom-screenshot {
   padding: 0 6px;
 }
 
-/*#custom-update_system {*/
-/*  color: @peach;*/
-/*}*/
+#custom-update_system {
+  color: @blue;
+  padding: 0 6px;
+}
+#custom-screenshot {
+  color: @pink;
+}
 
 #custom-picker {
   color: @rosewater;
