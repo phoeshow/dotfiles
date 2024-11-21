@@ -1,7 +1,7 @@
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 20,
+  "height": 24,
   "margin-left": 6,
   "margin-right": 6,
   "margin-top": 2,
@@ -16,7 +16,7 @@
   ],
   "modules-center": ["hyprland/submap"],
   "modules-right": [
-    "custom/update_system",
+    //"custom/update_system",
     "mpris",
     "custom/split",
     "pulseaudio",
@@ -42,11 +42,22 @@
     "modules": [
       "custom/power",
       "custom/sys_monitor",
-      "custom/wallpaper",
+      //"power-profiles-daemon",
       "idle_inhibitor",
       "custom/picker",
       "custom/screenshot"
     ],
+  },
+  "power-profiles-daemon": {
+    "format": "icon",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   },
   "custom/update_system": {
     "format": "{}",
@@ -76,20 +87,14 @@
     "tooltip": false,
     "interval": "once",
   },
-  "custom/wallpaper": {
-    "format": "",
-    "tooltip": false,
-    "on-click": "sh ~/.config/hypr/scripts/wallpaper.sh",
-    "on-click-right": "sh ~/.config/hypr/scripts/wallpaper.sh random",
-  },
   "custom/applications": {
     "format": "󰣇",
-    "on-click": "sh ~/.config/hypr/scripts/wofi.sh",
+    "on-click": "sh ~/.config/rofi/launcher/launcher.sh",
     "tooltip": false,
   },
   "custom/power": {
     "format": "",
-    "on-click": "sh ~/.config/hypr/scripts/wofipower.sh",
+    "on-click": "sh $HOME/.config/rofi/powermenu/powermenu.sh",
     "tooltip": false,
   },
   "hyprland/workspaces": {
