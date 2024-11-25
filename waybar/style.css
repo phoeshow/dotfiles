@@ -1,25 +1,23 @@
 @import "mocha.css";
 * {
-  font-family:
-    JetBrains Mono,
-    monospace;
+  font-family: monospace;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 window#waybar {
-  background: alpha(@base, 0.9);
-  border: 1px solid @overlay1;
-  border-radius: 0px;
+  background-color: alpha(@mantle, 0.75);
+  /* background-color: transparent; */
+  border: 1px solid @mantle;
+  border-radius: 6px;
 }
 
-box {
-  /* padding: 0 6px; */
+#waybar > box{
+  padding: 0 4px;
 }
-
 tooltip {
   background: @mantle;
-  opacity: 0.8;
+  opacity: 0.9;
   border: 2px solid alpha(@surface0, 0.9);
 }
 
@@ -28,19 +26,12 @@ tooltip label {
 }
 
 #idle_inhibitor,
-#custom-applications,
 #custom-power,
-#custom-sys_monitor,
 #custom-picker,
-#custom-wallpaper,
 #custom-screenshot {
   padding: 0 6px;
 }
 
-#custom-update_system {
-  color: @blue;
-  padding: 0 6px;
-}
 #custom-screenshot {
   color: @pink;
 }
@@ -49,39 +40,8 @@ tooltip label {
   color: @rosewater;
 }
 
-#custom-sys_monitor {
-  color: @yellow;
-}
-
-#custom-split {
-  margin: 0 6px;
-  color: @surface1;
-}
-#custom-applications {
-  color: @blue;
-  margin-left: 3px;
-}
-
-#custom-wallpaper {
-  color: @mauve;
-}
-
 #custom-power {
   color: @red;
-  margin-right: 3px;
-}
-
-#window {
-  color: @teal;
-}
-
-#mpris {
-  color: @rosewater;
-}
-
-#workspaces {
-  padding: 0;
-  border-width: 0;
 }
 
 #workspaces button {
@@ -89,9 +49,8 @@ tooltip label {
   border-radius: 0;
   color: @text;
 }
-
 #workspaces button.empty {
-  color: @overlay0;
+  color: @surface1;
 }
 #workspaces button.visible {
   color: @blue;
@@ -101,11 +60,9 @@ tooltip label {
 }
 #workspaces button.focused {
 }
-
 #workspaces button.urgent {
   background-color: @red;
 }
-
 #workspaces button:hover {
 }
 
@@ -118,50 +75,41 @@ tooltip label {
 #idle_inhibitor.deactivated {
   color: @surface2;
 }
-#mode {
-  background-color: @base;
-}
 
-#submap {
-  color: @peach;
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio{
+  border-radius: 6px;
+  padding: 0 4px;
+  margin: 4px 2px;
+  color: @base;
 }
 
 #clock {
-  color: @blue;
+  background-color: @blue;
 }
 
 #cpu {
-  color: @mauve;
-  margin-right: 8px;
-}
-#disk {
-  color: @flamingo;
+  background-color: @mauve;
 }
 
 #memory {
-  color: @sky;
-  margin-right: 8px;
+  background-color: @sky;
 }
 
 #network {
-  color: @peach;
+  background-color: @peach;
 }
 
 #network.disconnected {
-  color: @red;
+  background-color: @red;
 }
 #pulseaudio {
-  color: @green;
+  background-color: @green;
 }
 
 #pulseaudio.muted {
-  color: @maroon;
-}
-
-#temperature {
-  color: @pink;
-}
-
-#temperature.critical {
-  color: @red;
+  background-color: @red;
 }
