@@ -7,8 +7,7 @@
 
 window#waybar {
   background-color: alpha(@mantle, 0.75);
-  /* background-color: transparent; */
-  border: 1px solid @mantle;
+  border: 1px solid @crust;
   border-radius: 6px;
 }
 
@@ -82,34 +81,35 @@ tooltip label {
 #network,
 #pulseaudio{
   border-radius: 6px;
-  padding: 0 4px;
+  padding: 0 6px;
   margin: 4px 2px;
   color: @base;
+  background-color: @crust;
 }
 
 #clock {
-  background-color: @blue;
+  color: @blue;
 }
 
 #cpu {
-  background-color: @mauve;
+  color: @mauve;
 }
 
 #memory {
-  background-color: @sky;
+  color: @sky;
 }
 
 #network {
-  background-color: @peach;
+  color: @peach;
 }
 
 #network.disconnected {
-  background-color: @red;
+  color: @red;
 }
 #pulseaudio {
-  background-color: @green;
+  color: @green;
 }
 
 #pulseaudio.muted {
-  background-color: @red;
+  color: @red;
 }
