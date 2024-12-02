@@ -81,8 +81,9 @@ format = ' [$user]($style)'
 [directory]
 style = "bold sky"
 format = " [$path]($style)"
-truncation_length = 5
+truncation_length = 3
 truncation_symbol = "…/"
+fish_style_pwd_dir_length = 1
 
 [git_branch]
 symbol = ""
