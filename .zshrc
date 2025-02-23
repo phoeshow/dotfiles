@@ -52,6 +52,8 @@ alias ls="eza --icons=auto"
 alias ll="eza -l --git --icons=auto"
 alias la="eza -l -a --git --icons=auto"
 alias grep="grep --color=auto"
+# show image in tmux
+alias fetch="fastfetch --kitty-icat ~/.config/fastfetch/fastfetch.png"
 
 # man page
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
