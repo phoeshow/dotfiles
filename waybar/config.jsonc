@@ -106,7 +106,7 @@
   "network": {
     "tooltip-format": "{ifname} via {gwaddr}",
     "format-disconnected": "Disconnected ⚠",
-    "format": " {signalStrength}%",
+    "format": " {bandwidthDownBytes} ",
     "format-alt": " {bandwidthUpBytes}| {bandwidthDownBytes}",
     "interval": 5,
   },
