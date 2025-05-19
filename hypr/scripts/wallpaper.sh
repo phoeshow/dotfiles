@@ -36,24 +36,12 @@ set_wallpaper() {
     wallpaperpath=$(<$HOME/.config/wallpaperpath)
   fi
 
-  hyprctl hyprpaper preload "${wallpaperpath}"
-  hyprctl hyprpaper wallpaper ",${wallpaperpath}"
+  # hyprctl hyprpaper preload "${wallpaperpath}"
+  # hyprctl hyprpaper wallpaper ",${wallpaperpath}"
+  swww ${wallpaperpath}
 
   exit 0
 }
-
-# random_wallpaper() {
-#   local target_directory="$HOME/Pictures/wallpapers"
-#   local image_files=($(find "$target_directory" -type f -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg"))
-#   local random_index=$((RANDOM % ${#image_files[@]}))
-#   local random_image="${image_files[$random_index]}"
-#
-#
-#   echo ${random_image} > $HOME/.config/wallpaperpath
-#
-#   set_wallpaper
-#
-# }
 
 if [ $1 == "init" ]; then
   set_wallpaper
