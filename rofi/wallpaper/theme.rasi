@@ -109,8 +109,8 @@ button selected {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     3;
-    lines:                       5;
+    columns:                     2;
+    lines:                       4;
     cycle:                       false;
     dynamic:                     true;
     scrollbar:                   false;
@@ -128,12 +128,13 @@ listview {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    spacing:                     15px;
-    padding:                     8px;
+    spacing:                     0px;
+    padding:                     10px;
     border-radius:               10px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
+    children:                    [ "element-icon" ];
 }
 element normal.normal {
     background-color:            inherit;
@@ -162,7 +163,7 @@ element selected.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        64px;
+    size:                        128px;
     cursor:                      inherit;
 }
 element-text {

@@ -1,4 +1,5 @@
 @import "mocha.css";
+
 * {
   font-family: monospace;
   font-weight: 700;
@@ -7,13 +8,14 @@
 
 window#waybar {
   background-color: alpha(@mantle, 0.75);
-  border: 1px solid @crust;
+  border: 1px solid @overlay0;
   border-radius: 6px;
 }
 
-#waybar > box{
+#waybar>box {
   padding: 0 4px;
 }
+
 tooltip {
   background: @mantle;
   opacity: 0.9;
@@ -48,29 +50,35 @@ tooltip label {
   border-radius: 0;
   color: @text;
 }
+
 #workspaces button.empty {
-  color: @surface1;
+  color: @text;
 }
+
 #workspaces button.visible {
   color: @blue;
 }
+
 #workspaces button.active {
   color: @green;
 }
-#workspaces button.focused {
-}
+
+#workspaces button.focused {}
+
 #workspaces button.urgent {
   background-color: @red;
 }
-#workspaces button:hover {
-}
+
+#workspaces button:hover {}
 
 #idle_inhibitor {
   /* margin-left: 10px; */
 }
+
 #idle_inhibitor.activated {
   color: @maroon;
 }
+
 #idle_inhibitor.deactivated {
   color: @surface2;
 }
@@ -79,7 +87,7 @@ tooltip label {
 #cpu,
 #memory,
 #network,
-#pulseaudio{
+#pulseaudio {
   border-radius: 6px;
   padding: 0 6px;
   margin: 4px 2px;
@@ -106,6 +114,7 @@ tooltip label {
 #network.disconnected {
   color: @red;
 }
+
 #pulseaudio {
   color: @green;
 }

@@ -1,10 +1,10 @@
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 30,
-  "margin-left": 20,
-  "margin-right": 20,
-  "margin-top": 2,
+  "height": 36,
+  "margin-left": 10,
+  "margin-right": 10,
+  "margin-top": 4,
   "margin-bottom": 0,
   "spacing": 4,
   // Choose the order of the modules
@@ -56,7 +56,8 @@
     "format-icons": {
       "urgent": "",
       "active": "",
-      "default": ""
+      "default": "",
+      "empty": "",
     },
     "on-click": "activate",
     "all-outputs": false,
