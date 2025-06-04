@@ -13,6 +13,8 @@ main ()
   echo ${real_path} > $HOME/.config/wallpaperpath
 
   set_wallpaper
+
+  exit
 }
 
 

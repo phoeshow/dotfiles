@@ -1,16 +1,14 @@
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 36,
-  "margin-left": 10,
-  "margin-right": 10,
-  "margin-top": 4,
+  "height": 16,
+  "margin-left": 0,
+  "margin-right": 0,
+  "margin-top": 0,
   "margin-bottom": 0,
   "spacing": 4,
   // Choose the order of the modules
-  "modules-left": [
-    "hyprland/workspaces",
-  ],
+  "modules-left": ["hyprland/workspaces"],
   "modules-right": [
     "pulseaudio",
     "network",
@@ -30,7 +28,7 @@
       "custom/power",
       "idle_inhibitor",
       "custom/picker",
-      "custom/screenshot"
+      "custom/screenshot",
     ],
   },
   "custom/picker": {
@@ -41,7 +39,7 @@
   "custom/screenshot": {
     "format": "",
     "tooltip": false,
-    "on-click": "grim -s 1 -g \"$(slurp)\" - | swappy -f -"
+    "on-click": "grim -s 1 -g \"$(slurp)\" - | swappy -f -",
   },
   "custom/power": {
     "format": "",
@@ -86,15 +84,15 @@
     "locale": "C",
     "tooltip-format": "<big>{:%Y-%m-%d %a}</big>\n<tt>{calendar}</tt>",
     "calendar": {
-      "weeks-pos"     : "none",
-      "on-scroll"     : 1,
+      "weeks-pos": "none",
+      "on-scroll": 1,
       "format": {
-        "months":     "<span color='#89b4fa'><b>{}</b></span>",
-        "days":       "<span color='#bac2de'>{}</span>",
-        "weeks":      "<span color='#7851a9'><b>W{:%U}</b></span>",
-        "weekdays":   "<span color='#89dceb'><b>{}</b></span>",
-        "today":      "<span color='#eba0ac'><b>{}</b></span>"
-      }
+        "months": "<span color='#89b4fa'><b>{}</b></span>",
+        "days": "<span color='#bac2de'>{}</span>",
+        "weeks": "<span color='#7851a9'><b>W{:%U}</b></span>",
+        "weekdays": "<span color='#89dceb'><b>{}</b></span>",
+        "today": "<span color='#eba0ac'><b>{}</b></span>",
+      },
     },
   },
   "cpu": {
@@ -123,7 +121,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": ["", "", ""],
     },
     "on-click": "pavucontrol -t 3",
     "on-click-right": "pavucontrol -t 4",

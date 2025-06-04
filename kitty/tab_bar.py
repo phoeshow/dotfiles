@@ -1,14 +1,11 @@
-from kitty.rgb import Color
-from kitty.utils import color_as_int
+"""draw kitty tab"""
+
+# pyright: reportMissingImports=false
+# pylint: disable=E0401,C0116,C0103,W0603,R0913
 from kitty.fast_data_types import Screen
-from kitty.tab_bar import (
-    as_rgb,
-    draw_title,
-    DrawData,
-    ExtraData,
-    Formatter,
-    TabBarData
-)
+from kitty.rgb import Color
+from kitty.tab_bar import DrawData, ExtraData, TabBarData, as_rgb, draw_title
+from kitty.utils import color_as_int
 
 ICON = " 󱩛 Phoeshow "
 ICON_FG = as_rgb(color_as_int(Color(30, 30, 46)))
@@ -20,6 +17,7 @@ ICON_SEP_COLOR_FG = as_rgb(color_as_int(Color(137, 180, 250)))
 ICON_SEP_COLOR_BG = as_rgb(color_as_int(Color(49, 50, 68)))
 
 TAB_INACTIVE_FG = as_rgb(color_as_int(Color(205, 214, 244)))
+
 
 def __draw_icon(screen: Screen, index: int) -> int:
     if index != 1:
@@ -36,12 +34,12 @@ def __draw_icon(screen: Screen, index: int) -> int:
 
 
 def __draw_tab(
-        draw_data: DrawData,
-        screen: Screen,
-        tab: TabBarData,
-        max_tab_length: int,
-        index: int,
-        extra_data: ExtraData
+    draw_data: DrawData,
+    screen: Screen,
+    tab: TabBarData,
+    max_tab_length: int,
+    index: int,
+    extra_data: ExtraData,
 ) -> int:
     tab_bg = screen.cursor.bg
     default_bg = as_rgb(int(draw_data.default_bg))
@@ -61,14 +59,14 @@ def __draw_tab(
 
 
 def draw_tab(
-        draw_data: DrawData,
-        screen: Screen,
-        tab: TabBarData,
-        before: int,
-        max_title_length: int,
-        index: int,
-        is_last: bool,
-        extra_data: ExtraData,
+    draw_data: DrawData,
+    screen: Screen,
+    tab: TabBarData,
+    before: int,
+    max_title_length: int,
+    index: int,
+    is_last: bool,
+    extra_data: ExtraData,
 ) -> int:
     __draw_icon(screen, index)
     end = __draw_tab(draw_data, screen, tab, max_title_length, index, extra_data)

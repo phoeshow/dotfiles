@@ -129,7 +129,7 @@ listview {
 element {
     enabled:                     true;
     spacing:                     0px;
-    padding:                     10px;
+    padding:                     0px 20px;
     border-radius:               10px;
     background-color:            transparent;
     text-color:                  @foreground;
@@ -165,6 +165,8 @@ element-icon {
     text-color:                  inherit;
     size:                        128px;
     cursor:                      inherit;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
 }
 element-text {
     background-color:            transparent;

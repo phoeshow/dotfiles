@@ -7,19 +7,20 @@
 }
 
 window#waybar {
-  background-color: alpha(@mantle, 0.75);
-  border: 1px solid @overlay0;
-  border-radius: 6px;
+  /* background-color: alpha(@mantle, 0.75); */
+  /* border: 1px solid @overlay0; */
+  /* border-radius: 6px; */
+  background-color: transparent;
 }
 
-#waybar>box {
+#waybar > box {
   padding: 0 4px;
 }
 
 tooltip {
-  background: @mantle;
   opacity: 0.9;
   border: 2px solid alpha(@surface0, 0.9);
+  background: @mantle;
 }
 
 tooltip label {
@@ -30,7 +31,13 @@ tooltip label {
 #custom-power,
 #custom-picker,
 #custom-screenshot {
-  padding: 0 6px;
+  /* padding: 0 6px; */
+  /* background-color: @crust; */
+  border-radius: 6px;
+  padding: 2px 6px;
+  margin: 6px 2px;
+  color: @base;
+  background-color: @base;
 }
 
 #custom-screenshot {
@@ -63,13 +70,12 @@ tooltip label {
   color: @green;
 }
 
-#workspaces button.focused {}
+#workspaces button.focused {
+}
 
 #workspaces button.urgent {
   background-color: @red;
 }
-
-#workspaces button:hover {}
 
 #idle_inhibitor {
   /* margin-left: 10px; */
@@ -87,12 +93,14 @@ tooltip label {
 #cpu,
 #memory,
 #network,
-#pulseaudio {
+#pulseaudio,
+#workspaces,
+#tray {
   border-radius: 6px;
-  padding: 0 6px;
-  margin: 4px 2px;
+  padding: 2px 6px;
+  margin: 6px 2px;
   color: @base;
-  background-color: @crust;
+  background-color: @base;
 }
 
 #clock {
