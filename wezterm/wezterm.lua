@@ -19,22 +19,56 @@ local function platform()
   end
 end
 
+local colors = {
+  rosewater = "#f5e0dc",
+  flamingo = "#f2cdcd",
+  pink = "#f5c2e7",
+  mauve = "#cba6f7",
+  red = "#f38ba8",
+  maroon = "#eba0ac",
+  peach = "#fab387",
+  yellow = "#f9e2af",
+  green = "#a6e3a1",
+  teal = "#94e2d5",
+  sky = "#89dceb",
+  sapphire = "#74c7ec",
+  blue = "#89b4fa",
+  lavender = "#b4befe",
+  text = "#cdd6f4",
+  subtext1 = "#bac2de",
+  subetxt0 = "#a6adc8",
+  overlay2 = "#9399b2",
+  overlay1 = "#7f849c",
+  overlay0 = "#6c7086",
+  surface2 = "#585b70",
+  surface1 = "#45475a",
+  surface0 = "#313244",
+  base = "#1e1e2e",
+  mantle = "#181825",
+  crust = "#11111b",
+}
+
 config.font_size = 16
 
-config.color_scheme = "Catppuccin Mocha"
+local custom_scheme = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
+
+custom_scheme.tab_bar.background = colors.surface0
+
+config.color_schemes = {
+  ["OLEDppuccin"] = custom_scheme,
+}
+
+config.color_scheme = "OLEDppuccin"
 config.font = wezterm.font_with_fallback({
   {
-    family = "Rec Mono Semicasual",
+    family = "Maple Mono CN",
     weight = "Regular",
-  },
-  {
-    family = "LXGW WenKai Mono",
-    weight = "Medium",
   },
 })
 config.window_background_opacity = 0.9
 config.use_fancy_tab_bar = false
-config.show_new_tab_button_in_tab_bar = true
+config.tab_bar_at_bottom = true
+config.show_new_tab_button_in_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
 config.window_decorations = "RESIZE"
 config.status_update_interval = 1000
@@ -42,7 +76,16 @@ config.window_close_confirmation = "AlwaysPrompt"
 config.disable_default_key_bindings = true
 config.adjust_window_size_when_changing_font_size = false
 -- wait fix on wayland
-config.enable_wayland = false
+config.enable_wayland = true
+
+if platform() == "Linux" then
+  config.window_decorations = "NONE"
+  config.font_size = 11
+end
+
+if platform() == "MacOS" then
+  config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW"
+end
 
 config.window_padding = {
   top = 0,
@@ -50,8 +93,8 @@ config.window_padding = {
 }
 
 config.inactive_pane_hsb = {
-  saturation = 0.7,
-  brightness = 0.5,
+  saturation = 0.9,
+  brightness = 0.7,
 }
 
 local act = wezterm.action
@@ -99,9 +142,7 @@ config.leader = {
 config.keys = {
   { key = "b", mods = "LEADER|CTRL", action = act.SendKey({ key = "b", mods = "CTRL" }) },
   { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
-  { key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
   { key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
-  { key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
   { key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
   { key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
@@ -124,6 +165,42 @@ config.keys = {
   { key = "=", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
   { key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
   { key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
+
+  -- Prompt for a name to use for a new workspace and wsitch to it
+  {
+    key = "W",
+    mods = "LEADER",
+    action = act.PromptInputLine({
+      description = wezterm.format({
+        { Attribute = { Intensity = "Bold" } },
+        { Foreground = { AnsiColor = "Fuchsia" } },
+        { Text = "Enter name for new workspace" },
+      }),
+      action = wezterm.action_callback(function(window, pane, line)
+        -- line will be `nil` if they hit escape without entering anything
+        -- An empty string if they just hit enter
+        -- Or the actual line of text they wrote
+        if line then
+          window:perform_action(
+            act.SwitchToWorkspace({
+              name = line,
+            }),
+            pane
+          )
+        end
+      end),
+    }),
+  },
+  {
+    key = "S",
+    mods = "LEADER",
+    action = act.ShowLauncherArgs({
+      flags = "FUZZY|WORKSPACES",
+    }),
+  },
+
+  -- CTRL-SHIFT-l activates the debug overlay
+  { key = "L", mods = "CTRL", action = wezterm.action.ShowDebugOverlay },
 }
 
 -- I can use the tab navigator (LDR t), but I also want to quickly navigate tabs with index
@@ -156,39 +233,38 @@ config.key_tables = {
 
 wezterm.on("update-status", function(window, pane)
   local time = wezterm.strftime("%H:%M")
-  local stat = ""
-  local stat_color = "#a6d189"
-  local stat_back_color = "#292c3c"
-  local stat_seprator = wezterm.nerdfonts.ple_upper_left_triangle
+  local stat = window:active_workspace()
+  local stat_color = colors.base
+  local stat_back_color = colors.blue
+  local stat_seprator = ""
   if window:active_key_table() then
     stat = window:active_key_table() .. " "
-    stat_color = "#ca9ee6"
-    stat_back_color = "#292c3c"
+    stat_color = colors.base
+    stat_back_color = colors.mauve
   end
   if window:leader_is_active() then
-    stat = ""
-    stat_color = "#292c3c"
-    stat_back_color = "#ef9f76"
+    stat_color = colors.base
+    stat_back_color = colors.maroon
   end
-
-  local cwd = pane:get_current_working_dir()
-  local cwd_path = cwd.file_path
 
   local basename = function(s)
     return string.gsub(s, "(.*[/\\])(.*)", "%2")
   end
+
+  local cwd = pane:get_current_working_dir()
+  local cwd_path = cwd.file_path:match("([^/]+)/?$")
 
   -- local win_count = wezterm.nerdfonts.cod_window
   local win_split_state = ""
   local tab = pane:tab()
   if tab ~= nil then
     if #tab:panes_with_info() == 1 then -- single pane
-      win_split_state = wezterm.nerdfonts.cod_window
+      win_split_state = ""
     else
-      win_split_state = wezterm.nerdfonts.cod_terminal_tmux -- split window
+      win_split_state = "" -- split window
       for _, p in ipairs(tab:panes_with_info()) do
         if p.is_zoomed and p.is_active then -- zoomed window
-          win_split_state = wezterm.nerdfonts.cod_screen_full
+          win_split_state = ""
         end
       end
     end
@@ -199,110 +275,64 @@ wezterm.on("update-status", function(window, pane)
     { Attribute = { Intensity = "Bold" } },
     { Foreground = { Color = stat_color } },
     { Background = { Color = stat_back_color } },
-    { Text = " " .. wezterm.nerdfonts.md_leaf .. " " .. stat },
+    { Text = " " .. "󱩛 " .. stat },
     { Foreground = { Color = stat_back_color } },
-    { Background = { Color = "#292c3c" } },
+    { Background = { Color = colors.surface0 } },
     { Text = stat_seprator },
   }))
 
   -- Right Status
   window:set_right_status(wezterm.format({
-    { Foreground = { Color = "#303446" } },
-    { Background = { Color = "#ca9ee6" } },
+    { Foreground = { Color = colors.base } },
+    { Background = { Color = colors.mauve } },
     { Attribute = { Intensity = "Bold" } },
     { Text = " " .. win_split_state .. "  " },
     "ResetAttributes",
-    { Foreground = { Color = "#303446" } },
-    { Background = { Color = "#ea999c" } },
+    { Foreground = { Color = colors.base } },
+    { Background = { Color = colors.red } },
     { Attribute = { Intensity = "Bold" } },
-    { Text = " " .. wezterm.nerdfonts.md_folder .. " " .. basename(cwd_path) .. " " },
+    { Text = " " .. "󰉋 " .. cwd_path .. " " },
+    -- "ResetAttributes",
+    -- { Background = { Color = colors.yellow } },
+    -- { Foreground = { Color = colors.base } },
+    -- { Attribute = { Intensity = "Bold" } },
+    -- { Text = " " .. wezterm.nerdfonts.dev_terminal .. " " .. basename(pane:get_foreground_process_name()) .. " " },
     "ResetAttributes",
-    { Background = { Color = "#e5c890" } },
-    { Foreground = { Color = "#303446" } },
     { Attribute = { Intensity = "Bold" } },
-    { Text = " " .. wezterm.nerdfonts.dev_terminal .. " " .. basename(pane:get_foreground_process_name()) .. " " },
-    "ResetAttributes",
-    { Attribute = { Intensity = "Bold" } },
-    { Foreground = { Color = "#303446" } },
-    { Background = { Color = "#81c8be" } },
-    { Text = " " .. wezterm.nerdfonts.md_clock .. " " .. time .. " " },
+    { Foreground = { Color = colors.base } },
+    { Background = { Color = colors.teal } },
+    { Text = " " .. "󰥔 " .. time .. " " },
   }))
 end)
 
-wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
-  local zoomed = ""
-  if #panes > 1 then
-    zoomed = ""
-  end
-  if tab.active_pane.is_zoomed then
-    zoomed = "󰖯"
-  end
-
-  local index = ""
-  if #tabs > 1 then
-    index = string.format("[%d|%d] ", tab.tab_index + 1, #tabs)
-  end
-
-  return zoomed .. index .. tab.active_pane.title .. " - wezterm"
-end)
-
-function tab_title(tab_info)
-  local title = tab_info.tab_title
-  if title and #title > 0 then
-    return title
-  end
-
-  return tab_info.active_pane.title
-end
-
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  local edge_background = "#292c3c"
-  local background = "#414559"
-  local foreground = "#c6d0f5"
-  local intensity = "Normal"
+  local background = colors.surface1
+  local foreground = colors.overlay2
 
   if tab.is_active then
-    background = "#a6d189"
-    foreground = "#303446"
-    intensity = "Bold"
+    background = colors.green
+    foreground = colors.base
   elseif hover then
-    background = "#51576d"
-    foreground = "#c6d0f5"
+    background = colors.surface2
+    foreground = colors.text
   end
 
+  local edge_background = colors.surface0
   local edge_foreground = background
-  local index = ""
-  local index_table = {
-    wezterm.nerdfonts.md_numeric_1,
-    wezterm.nerdfonts.md_numeric_2,
-    wezterm.nerdfonts.md_numeric_3,
-    wezterm.nerdfonts.md_numeric_4,
-    wezterm.nerdfonts.md_numeric_5,
-    wezterm.nerdfonts.md_numeric_6,
-    wezterm.nerdfonts.md_numeric_7,
-    wezterm.nerdfonts.md_numeric_8,
-    wezterm.nerdfonts.md_numeric_9,
-  }
-  local title = tab_title(tab)
-
-  if #tabs > 1 then
-    index = index_table[tab.tab_index + 1] .. " "
-    title = wezterm.truncate_right(title, max_width - 4)
-  else
-    title = wezterm.truncate_right(title, max_width - 2)
-  end
+  local index = tab.tab_index
+  local title = tab.active_pane.title
 
   return wezterm.format({
-    { Attribute = { Intensity = intensity } },
-    { Background = { Color = edge_background } },
-    { Foreground = { Color = edge_foreground } },
-    { Text = wezterm.nerdfonts.ple_lower_right_triangle },
+    { Attribute = { Intensity = "Bold" } },
+    { Background = { Color = edge_foreground } },
+    { Foreground = { Color = edge_background } },
+    { Text = "" },
     { Background = { Color = background } },
     { Foreground = { Color = foreground } },
-    { Text = index .. title },
+    { Text = " " .. index + 1 .. "  " .. title .. " " },
     { Background = { Color = edge_background } },
     { Foreground = { Color = edge_foreground } },
-    { Text = wezterm.nerdfonts.ple_upper_left_triangle },
+    { Text = "" },
   })
 end)
 
