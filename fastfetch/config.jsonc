@@ -9,12 +9,8 @@
   },
   "modules": [
     {
-      "type": "custom", // HardwareStart
-      "format": "  \u001b[36;1mHardware Information", // `\u001b` is `\033`, or `\e`
-    },
-    {
       "type": "custom", // InformationEnd
-      "format": "┌────────────────────────────────────────────┐",
+      "format": "\u001b[36;1m┌───[Hardware Information]",
     },
     {
       "type": "cpu",
@@ -38,20 +34,12 @@
     },
     {
       "type": "custom", // InformationEnd
-      "format": "└────────────────────────────────────────────┘",
-    },
-    {
-      "type": "custom", // SoftwareStart
-      "format": "  \u001b[35;1mSoftware Information",
-    },
-    {
-      "type": "custom", // InformationEnd
-      "format": "┌────────────────────────────────────────────┐",
+      "format": "\u001b[35;1m├───[Software Information]",
     },
     {
       "type": "os",
       "keyColor": "yellow",
-      "key": "├─ ", // Just get your distro's logo off nerdfonts.com
+      "key": "├─OS", // Just get your distro's logo off nerdfonts.com
     },
     {
       "type": "kernel",
@@ -69,11 +57,11 @@
       "keyColor": "yellow",
       "key": "├─ ",
     },
-    // {
-    //   "type": "shell",
-    //   "keyColor": "yellow",
-    //   "key": "├─ ",
-    // },
+    {
+      "type": "shell",
+      "keyColor": "yellow",
+      "key": "├─ ",
+    },
     {
       "type": "terminal",
       "keyColor": "yellow",
@@ -88,10 +76,6 @@
       "type": "uptime",
       "keyColor": "yellow",
       "key": "├─󰅐 ",
-    },
-    {
-      "type": "custom", // InformationEnd
-      "format": "└────────────────────────────────────────────┘",
     },
     {
       "type": "colors",

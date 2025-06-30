@@ -16,12 +16,16 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in zsh plugins
-# zinit snippet OMZP::git
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-# zinit light MichaelAquilina/zsh-you-should-use
 zinit light Aloxaf/fzf-tab
+# fzf-history-search: use '<C-r>' key show fzf window for cmd histroy
+zinit ice lucid wait'0'
+zinit light joshskidmore/zsh-fzf-history-search
+# extract: uesful for extract archive with 'x filename'
+zinit ice lucid wait'1'
+zinit snippet OMZP::extract
 
 # Load completions
 autoload -U compinit && compinit
@@ -56,8 +60,8 @@ alias grep="grep --color=auto"
 alias fetch="fastfetch --kitty-icat ~/.config/fastfetch/fastfetch.png"
 
 # man page
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export MANROFFOPT="-c"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export MANROFFOPT="-c"
 
 # Editor
 export EDITOR="nvim"
@@ -65,6 +69,9 @@ export EDITOR="nvim"
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
+
+# batman
+eval "$(batman --export-env)"
 
 # node version manager
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"

@@ -259,12 +259,12 @@ wezterm.on("update-status", function(window, pane)
   local tab = pane:tab()
   if tab ~= nil then
     if #tab:panes_with_info() == 1 then -- single pane
-      win_split_state = ""
+      win_split_state = " "
     else
-      win_split_state = "" -- split window
+      win_split_state = " " -- split window
       for _, p in ipairs(tab:panes_with_info()) do
         if p.is_zoomed and p.is_active then -- zoomed window
-          win_split_state = ""
+          win_split_state = " "
         end
       end
     end
@@ -275,7 +275,7 @@ wezterm.on("update-status", function(window, pane)
     { Attribute = { Intensity = "Bold" } },
     { Foreground = { Color = stat_color } },
     { Background = { Color = stat_back_color } },
-    { Text = " " .. "󱩛 " .. stat },
+    { Text = " 󱩛 " .. stat },
     { Foreground = { Color = stat_back_color } },
     { Background = { Color = colors.surface0 } },
     { Text = stat_seprator },
@@ -286,7 +286,7 @@ wezterm.on("update-status", function(window, pane)
     { Foreground = { Color = colors.base } },
     { Background = { Color = colors.mauve } },
     { Attribute = { Intensity = "Bold" } },
-    { Text = " " .. win_split_state .. "  " },
+    { Text = " " .. win_split_state .. " " },
     "ResetAttributes",
     { Foreground = { Color = colors.base } },
     { Background = { Color = colors.red } },
@@ -301,9 +301,17 @@ wezterm.on("update-status", function(window, pane)
     { Attribute = { Intensity = "Bold" } },
     { Foreground = { Color = colors.base } },
     { Background = { Color = colors.teal } },
-    { Text = " " .. "󰥔 " .. time .. " " },
+    { Text = " " .. "󰥔 " .. time },
   }))
 end)
+
+local function tab_title(tab_info)
+  local title = tab_info.tab_title
+  if title and #title > 0 then
+    return title
+  end
+  return tab_info.active_pane.title
+end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local background = colors.surface1
@@ -320,7 +328,8 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   local edge_background = colors.surface0
   local edge_foreground = background
   local index = tab.tab_index
-  local title = tab.active_pane.title
+  local title = tab_title(tab)
+  title = wezterm.truncate_right(title, max_width - 2)
 
   return wezterm.format({
     { Attribute = { Intensity = "Bold" } },
