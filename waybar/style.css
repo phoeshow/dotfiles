@@ -31,11 +31,10 @@ tooltip label {
 #custom-power,
 #custom-picker,
 #custom-screenshot {
-  /* padding: 0 6px; */
-  /* background-color: @crust; */
   border-radius: 6px;
   padding: 2px 6px;
   margin: 6px 2px;
+  border: 1px solid @lavender;
   color: @base;
   background-color: @base;
 }
@@ -99,19 +98,32 @@ tooltip label {
   border-radius: 6px;
   padding: 2px 6px;
   margin: 6px 2px;
+  border-width: 1px;
+  border-style: solid;
   color: @base;
   background-color: @base;
 }
 
+#tray {
+  border-color: @overlay1;
+}
+
+#workspaces {
+  border-color: @text;
+}
+
 #clock {
+  border-color: @blue;
   color: @blue;
 }
 
 #cpu {
+  border-color: @mauve;
   color: @mauve;
 }
 
 #memory {
+  border-color: @sky;
   color: @sky;
 }
 
@@ -124,9 +136,11 @@ tooltip label {
 }
 
 #pulseaudio {
+  border-color: @green;
   color: @green;
 }
 
 #pulseaudio.muted {
+  border-color: @red;
   color: @red;
 }
