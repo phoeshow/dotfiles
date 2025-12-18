@@ -16,6 +16,8 @@ $cmd_duration\
 $time\
 $line_break$character"""
 
+scan_timeout = 200
+
 palette = 'catppuccin_mocha'
 
 [palettes.catppuccin_mocha]

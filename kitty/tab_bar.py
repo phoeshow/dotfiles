@@ -7,12 +7,12 @@ from kitty.rgb import Color
 from kitty.tab_bar import DrawData, ExtraData, TabBarData, as_rgb, draw_title
 from kitty.utils import color_as_int
 
-ICON = " 󱩛 Phoeshow "
+ICON = " "
 ICON_FG = as_rgb(color_as_int(Color(30, 30, 46)))
 ICON_BG = as_rgb(color_as_int(Color(137, 180, 250)))
 
 LEFT_SEP = ""
-RIGHT_SEP = ""
+RIGHT_SEP = " "
 ICON_SEP_COLOR_FG = as_rgb(color_as_int(Color(137, 180, 250)))
 ICON_SEP_COLOR_BG = as_rgb(color_as_int(Color(49, 50, 68)))
 
@@ -43,12 +43,17 @@ def __draw_tab(
 ) -> int:
     tab_bg = screen.cursor.bg
     default_bg = as_rgb(int(draw_data.default_bg))
+
     if extra_data.next_tab:
         next_tab_bg = as_rgb(draw_data.tab_bg(extra_data.next_tab))
     else:
         next_tab_bg = default_bg
+
+    screen.cursor.fg = tab_bg
+    screen.cursor.bg = default_bg
+    screen.draw(LEFT_SEP)
     screen.cursor.fg = default_bg
-    screen.draw(RIGHT_SEP)
+    screen.cursor.bg = tab_bg
     draw_title(draw_data, screen, tab, index, max_tab_length)
     screen.cursor.fg = tab_bg
     screen.cursor.bg = default_bg
@@ -68,6 +73,6 @@ def draw_tab(
     is_last: bool,
     extra_data: ExtraData,
 ) -> int:
-    __draw_icon(screen, index)
+    # __draw_icon(screen, index)
     end = __draw_tab(draw_data, screen, tab, max_title_length, index, extra_data)
     return end

@@ -28,10 +28,9 @@ set_wallpaper() {
     echo ${wallpaperpath} > $HOME/.config/wallpaperpath
   fi
 
-  # hyprctl hyprpaper preload "${wallpaperpath}"
-  # hyprctl hyprpaper wallpaper ",${wallpaperpath}"
-  pkill swaybg
-  swaybg --image ${wallpaperpath} -m fill
+  # pkill swaybg
+  # swaybg --image ${wallpaperpath} -m fill
+  swww img ${wallpaperpath} --transition-type any --transition-duration 1 --transition-step 90 --transition-fps 60 
 }
 
 if [[ $1 == "init" ]]; then

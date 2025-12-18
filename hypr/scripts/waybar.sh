@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 CONFIG="$HOME/.config/waybar/config.jsonc"
 STYLE="$HOME/.config/waybar/style.css"
@@ -6,5 +6,5 @@ STYLE="$HOME/.config/waybar/style.css"
 # restart waybar
 killall waybar
 if [[ ! $(pidof waybar) ]]; then
-  waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}
+  waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE} &> ~/.cache/waybar.log
 fi
