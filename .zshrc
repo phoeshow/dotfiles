@@ -74,10 +74,6 @@ eval "$(zoxide init zsh)"
 # batman
 eval "$(batman --export-env)"
 
-# node version manager
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 # starship
 eval "$(starship init zsh)"
 
@@ -103,3 +99,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# fnm
+FNM_PATH="/home/phoeshow/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi

@@ -1,5 +1,4 @@
 {
-  "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
   "height": 16,
   "margin-left": 0,
@@ -8,7 +7,7 @@
   "margin-bottom": 0,
   "spacing": 4,
   // Choose the order of the modules
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-right": [
     "pulseaudio",
     "network",
@@ -64,8 +63,12 @@
   },
   "hyprland/window": {
     "format": "{title}",
+    "max-length": 20,
     "rewrite": {
       "(.*) — Mozilla Firefox": " $1",
+      "(.*) — Zen Browser": "󰬡 $1",
+      "nvim (.*)": " $1",
+      "tmux": " Tmux",
     },
   },
   "idle_inhibitor": {

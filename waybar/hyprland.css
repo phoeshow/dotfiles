@@ -1,7 +1,7 @@
 @import "mocha.css";
 
 * {
-  font-family: monospace;
+  font-family: "JetBrainsMono Nerd Font Propo";
   font-weight: 700;
   font-size: 14px;
 }
@@ -94,6 +94,7 @@ tooltip label {
 #network,
 #pulseaudio,
 #workspaces,
+#window,
 #tray {
   border-radius: 6px;
   padding: 2px 6px;
@@ -110,6 +111,16 @@ tooltip label {
 
 #workspaces {
   border-color: @text;
+}
+
+#window {
+  border-color: @lavender;
+  color: @lavender;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+  border: none;
 }
 
 #clock {

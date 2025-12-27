@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-CONFIG="$HOME/.config/waybar/config.jsonc"
-STYLE="$HOME/.config/waybar/style.css"
+CONFIG="$HOME/.config/waybar/hyprland.jsonc"
+STYLE="$HOME/.config/waybar/hyprland.css"
 
 # restart waybar
 killall waybar
