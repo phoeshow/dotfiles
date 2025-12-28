@@ -1,5 +1,3 @@
-/* @import "mocha.css"; */
-
 * {
   border: none;
   border-radius: 0;
@@ -12,6 +10,9 @@
 window#waybar {
   background-color: #1e1e2e;
   color: #cdd6f4;
+  border-bottom-color: #45475a;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 
 #clock,
@@ -22,7 +23,7 @@ window#waybar {
 #idle_inhibitor {
   padding: 0 10px;
   margin: 0 2px;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   background-color: transparent;
 }
 
@@ -38,7 +39,7 @@ window#waybar {
 }
 
 #workspaces button.focused {
-  box-shadow: inset 0 -2px #fab387;
+  box-shadow: inset 0 -3px #fab387;
   color: #fab387;
   font-weight: 900;
 }

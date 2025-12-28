@@ -56,7 +56,6 @@ alias ls="eza --icons=auto"
 alias ll="eza -l --git --icons=auto"
 alias la="eza -l -a --git --icons=auto"
 alias grep="grep --color=auto"
-alias C="clear"
 alias ..="cd .."
 alias ...="cd ../.."
 
@@ -83,12 +82,11 @@ export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew/core.git"
 export HOMEBREW_CASK_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew/cask.git"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
 
-function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
 
