@@ -197,9 +197,9 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         // off
 
-        width 2
-        // active-color "#9399b2"
-        inactive-color "#313244"
+        width 1
+        active-color "#cdd6f4"
+        inactive-color "#45475a"
 
         // Color of the border around windows that request your attention.
         urgent-color "#9b0000"
@@ -208,7 +208,7 @@ layout {
         // For example, this is a pastel rainbow gradient via in="oklch longer hue".
         //
         // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-        active-gradient from="#b4befe" to="#a6e3a1" angle=45
+        // active-gradient from="#b4befe" to="#a6e3a1" angle=45
 
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
@@ -238,7 +238,7 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 6
+        softness 12
 
         // Spread expands the shadow.
         spread 2
@@ -247,7 +247,7 @@ layout {
         offset x=0 y=0
 
         // You can also change the shadow color and opacity.
-        color "rgba(116, 199, 236, 0.6)"
+        color "rgba(30, 30, 46, 0.8)"
         inactive-color "rgba(30, 30, 46, 0.8)"
     }
 
@@ -270,6 +270,12 @@ layout {
       inactive-color "#9399b2"
       gaps-between-tabs 6
     }
+}
+
+// overview
+overview {
+  zoom 0.75
+  backdrop-color "#313244"
 }
 
 // Add lines like this to spawn processes at startup.
@@ -388,8 +394,8 @@ layer-rule {
   match namespace="waybar"
   shadow {
     on
-    softness 4
-    spread 4
+    softness 10
+    spread 2
     color "rgba(30,30,46,0.75)"
   }
 }
