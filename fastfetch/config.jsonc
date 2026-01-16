@@ -3,8 +3,8 @@
   "logo": {
     "type": "kitty-icat",
     "source": "~/.config/fastfetch/fastfetch_2.png",
-    "width": 32,
-    "height": 32,
+    "width": 26,
+    "height": 26,
   },
   "display": {
     "separator": " ",
