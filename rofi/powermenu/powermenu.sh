@@ -10,6 +10,9 @@ logout=''
 yes=''
 no='󰅙'
 
+#  current desktop session "hyprland | niri"
+session="${XDG_CURRENT_DESKTOP}"
+
 dir="$HOME/.config/rofi/powermenu"
 
 # CMDs
@@ -75,12 +78,20 @@ case ${chosen} in
 		  run_cmd --reboot
         ;;
     $lock)
-			hyprlock
+      if [[ "$session" == "Hyprland" ]]; then
+        hyprlock
+      elif [[ "$session" == "niri" ]]; then
+        swaylock
+      fi
         ;;
     $suspend)
 		  run_cmd --suspend
         ;;
     $logout)
-		  run_cmd --logout
+      if [[ "$session" == "Hyprland" ]]; then
+        run_cmd --logout
+      elif [[ "$session" == "niri" ]]; then
+        niri msg action quit
+      fi
         ;;
 esac

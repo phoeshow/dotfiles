@@ -1,0 +1,16 @@
+// Add lines like this to spawn processes at startup.
+// Note that running niri as a session supports xdg-desktop-autostart,
+// which may be more convenient to use.
+// See the binds section below for more spawn examples.
+
+// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
+// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+
+spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+spawn-sh-at-startup "waybar --bar main-bar --config ~/.config/waybar/niri.jsonc --style ~/.config/waybar/niri.css"
+spawn-at-startup "mako"
+spawn-at-startup "swww-daemon"
+spawn-sh-at-startup "~/.config/rofi/wallpaper/wallpaper.sh init"
+spawn-sh-at-startup "udiskie --smart-tray"
+spawn-sh-at-startup "solaar --window=hide --battery-icons=regular"
+spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock -f" "timeout" "600" "niri msg action power-off-monitors" "before-sleep" "swaylock -f"

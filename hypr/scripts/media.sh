@@ -3,10 +3,12 @@
 toggle_mute() {
   if [ "$(pamixer --get-mute)" == "false" ]; then
     pamixer -m;
-    dunstify -h string:x-canonical-private-synchronous:audio "Mute:ON" --icon=audio-volume-muted
+    # dunstify -h string:x-canonical-private-synchronous:audio "Mute:ON" --icon=audio-volume-muted
+    notify-send -h string:x-canonical-private-synchronous:audio "Mute:ON" --icon=audio-volume-muted
   elif [ "$(pamixer --get-mute)" == "true" ]; then
     pamixer -u;
-    dunstify -h string:x-canonical-private-synchronous:audio "Mute:OFF" --icon=audio-volume-medium
+    # dunstify -h string:x-canonical-private-synchronous:audio "Mute:OFF" --icon=audio-volume-medium
+    notify-send -h string:x-canonical-private-synchronous:audio "Mute:OFF" --icon=audio-volume-medium
   fi
 }
 
@@ -20,12 +22,16 @@ toggle_mic() {
 
 increase_vol() {
   pamixer -i 2;
-  dunstify -h string:x-canonical-private-synchronous:audio "Volume" -h int:value:$(pamixer --get-volume) --icon=audio-volume-high
+  local volume=$(pamixer --get-volume)
+  # dunstify -h string:x-canonical-private-synchronous:audio "Volume" -h int:value:$(pamixer --get-volume) --icon=audio-volume-high
+  notify-send -t 1000 -a 'wp-vol' -h string:x-canonical-private-synchronous:volume -h int:value:$volume "Volume: ${volume}%"
 }
 
 decrease_vol() {
   pamixer -d 2;
-  dunstify -h string:x-canonical-private-synchronous:audio "Volume" -h int:value:$(pamixer --get-volume) --icon=audio-volume-low
+  local volume=$(pamixer --get-volume)
+  # dunstify -h string:x-canonical-private-synchronous:audio "Volume" -h int:value:$(pamixer --get-volume) --icon=audio-volume-low
+  notify-send -t 1000 -a 'wp-vol' -h string:x-canonical-private-synchronous:volume -h int:value:$volume "Volume: ${volume}%"
 }
 
 

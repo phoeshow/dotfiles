@@ -14,7 +14,8 @@ $lua\
 $fill\
 $cmd_duration\
 $time\
-$line_break$character"""
+$line_break\
+$character"""
 
 scan_timeout = 200
 
@@ -81,7 +82,7 @@ format = ' [$user]($style)'
 
 [directory]
 style = "bold sky"
-format = " [$path]($style)"
+format = " [$path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 fish_style_pwd_dir_length = 1
@@ -132,7 +133,8 @@ format = '[[  $time ](fg:text bg:surface1)]($style)'
 disabled = false
 
 [fill]
-symbol = " "
+symbol = "━"
+style = 'bold surface1'
 
 [character]
 disabled = false

@@ -3,7 +3,10 @@
   "position": "top",
   "height": 30,
   "spacing": 1,
-  "margin": 0,
+  "margin-top": 8,
+  "margin-left": 16,
+  "margin-right": 16,
+  "margin-bottom": 0,
   "modules-left": ["niri/workspaces"],
   "modules-center": [],
   "modules-right": [
@@ -14,6 +17,14 @@
     "custom/wallpaper",
     "idle_inhibitor",
   ],
+
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": "",
+    },
+  },
 
   "clock": {
     "format": "󰥔 {:%H:%M}",
@@ -84,7 +95,7 @@
   "custom/wallpaper": {
     "format": "",
     "tooltip": true,
-    "tooltip": "Click to choose a wallpaper",
+    "tooltip-format": "Click to choose a wallpaper",
     "on-click": "~/.config/rofi/wallpaper/wallpaper.sh",
   },
 }
