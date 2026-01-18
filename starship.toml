@@ -133,7 +133,7 @@ format = '[[  $time ](fg:text bg:surface1)]($style)'
 disabled = false
 
 [fill]
-symbol = "━"
+symbol = "─"
 style = 'bold surface1'
 
 [character]

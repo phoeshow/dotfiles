@@ -9,11 +9,11 @@ window#waybar {
 }
 
 #waybar > box {
-  background-color: rgba(30, 30, 46, 0.95);
+  background-color: rgb(30, 30, 46);
   margin: 8px 16px 8px 16px;
   border: 1px solid #45475a;
   padding: 0 8px;
-  box-shadow: 0px 0px 4px 0px rgba(30, 30, 30, 0.95);
+  box-shadow: 0px 0px 4px 2px rgba(30, 30, 30, 0.95);
 }
 
 tooltip {
@@ -27,12 +27,17 @@ tooltip label {
 }
 
 #idle_inhibitor,
+#custom-wallpaper,
 #custom-power,
 #custom-picker,
 #custom-screenshot {
   padding: 2px 6px;
   margin: 6px 2px;
   background-color: transparent;
+}
+
+#custom-wallpaper {
+  color: #f5c2e7;
 }
 
 #custom-screenshot {
@@ -125,4 +130,11 @@ window#waybar.empty #window {
 
 #pulseaudio.muted {
   color: #f38ba8;
+}
+
+#tray {
+  padding: 0px 8px;
+  margin-right: 4px;
+  border-left: 1px solid #45475a;
+  border-right: 1px solid #45475a;
 }
