@@ -30,7 +30,7 @@ set_wallpaper() {
 
   # pkill swaybg
   # swaybg --image ${wallpaperpath} -m fill
-  swww img ${wallpaperpath} --transition-type any --transition-duration 1 --transition-step 90 --transition-fps 60 
+  awww img ${wallpaperpath} --transition-type any --transition-duration 1 --transition-step 90 --transition-fps 60 
 }
 
 if [[ $1 == "init" ]]; then

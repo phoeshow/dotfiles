@@ -9,7 +9,7 @@ window#waybar {
 }
 
 #waybar > box {
-  background-color: rgb(30, 30, 46);
+  background-color: rgba(30, 30, 46, 0.94);
   margin: 8px 16px 8px 16px;
   border: 1px solid #45475a;
   padding: 0 8px;

@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "posetion": "top", // Waybar position (top|bottom|left|right)
-  "height": 30,
+  "height": 54,
   "margin": 0,
   "spacing": 4,
   // Choose the order of the modules
@@ -60,7 +60,6 @@
       "default": "",
       "empty": "",
     },
-    "on-click": "activate",
     "all-outputs": false,
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",

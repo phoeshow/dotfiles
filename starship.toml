@@ -6,11 +6,6 @@ $os\
 $directory\
 $git_branch\
 $git_status\
-$rust\
-$golang\
-$nodejs\
-$python\
-$lua\
 $fill\
 $cmd_duration\
 $time\
@@ -93,31 +88,6 @@ format = " [](mauve)[$symbol $branch(:$remote_branch)](bold fg:base bg:mauve)
 
 [git_status]
 style = "bold flamingo"
-
-[nodejs]
-symbol = ""
-style = "bold green"
-format = '[ $symbol( $version) ]($style)'
-
-[rust]
-symbol = ""
-style = "bold peach"
-format = '[ $symbol( $version) ]($style)'
-
-[golang]
-symbol = ""
-style = "bold blue"
-format = '[ $symbol( $version) ]($style)'
-
-[python]
-symbol = ""
-style = "bold blue"
-format = '[ $symbol( $version) ]($style)'
-
-[lua]
-symbol = ""
-style = "bold blue"
-format = '[ $symbol( $version) ]($style)'
 
 [cmd_duration]
 style = "bg:surface1"

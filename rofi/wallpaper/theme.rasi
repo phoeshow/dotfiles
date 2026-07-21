@@ -5,7 +5,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "monospace 12";
+    font:                        "Maple Mono CN 12";
     background:                  #1e1e2e;
     background-alt:              #585b70;
     foreground:                  #cdd6f4;

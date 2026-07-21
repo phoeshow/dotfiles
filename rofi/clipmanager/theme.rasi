@@ -1,7 +1,7 @@
 /* ROFI SIMPLE THEME USING THE CATPPUCCIN PALETTE  */
 
 * {
-    font:                        "monospace 12";
+    font:                        "Maple Mono CN 12";
 
     bg0:     #1E1E2E;
     bg1:     #313244;

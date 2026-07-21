@@ -54,15 +54,28 @@ run_rofi() {
 run_cmd() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
-		if [[ $1 == '--shutdown' ]]; then
-			systemctl poweroff
-		elif [[ $1 == '--reboot' ]]; then
-			systemctl reboot
-		elif [[ $1 == '--suspend' ]]; then
-			systemctl suspend
-		elif [[ $1 == '--logout' ]]; then
-      hyprctl dispatch exit 0
-		fi
+    if [[ "$session" == "Hyprland" ]]; then
+      if [[ $1 == '--shutdown' ]]; then
+        hyprshutdown -t 'Shutting down ...' --post-cmd 'shutdown -P 0'
+      elif [[ $1 == '--reboot' ]]; then
+        systemctl reboot
+        hyprshutdown -t 'Restarting ...' --post-cmd 'reboot'
+      elif [[ $1 == '--suspend' ]]; then
+        systemctl suspend
+      elif [[ $1 == '--logout' ]]; then
+        hyprshutdown -t 'logout'
+      fi
+    elif [[ "$session" == "niri" ]]; then
+      if [[ $1 == '--shutdown' ]]; then
+        systemctl poweroff
+      elif [[ $1 == '--reboot' ]]; then
+        systemctl reboot
+      elif [[ $1 == '--suspend' ]]; then
+        systemctl suspend
+      elif [[ $1 == '--logout' ]]; then
+        niri msg action quit
+      fi
+    fi
 	else
 		exit 0
 	fi
@@ -88,10 +101,6 @@ case ${chosen} in
 		  run_cmd --suspend
         ;;
     $logout)
-      if [[ "$session" == "Hyprland" ]]; then
-        run_cmd --logout
-      elif [[ "$session" == "niri" ]]; then
-        niri msg action quit
-      fi
+      run_cmd --logout
         ;;
 esac
