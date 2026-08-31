@@ -37,7 +37,7 @@ require("modules.environment")
 require("modules.appearance")
 
 ----------------
-----  OTHER  ----
+----  OTHER ----
 ----------------
 
 hl.config({

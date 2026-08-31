@@ -98,8 +98,8 @@ window#waybar {
   background-color: transparent;
 }
 #idle_inhibitor.activated {
-  color: #313244;
-  background-color: #f38ba8;
+  color: #f38ba8;
+  background-color: transparent;
 }
 #custom-wallpaper {
   color: #cba6f7;

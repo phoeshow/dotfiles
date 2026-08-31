@@ -15,10 +15,11 @@ binds {
 
     // open terminal
     Mod+RETURN hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
+    // Mod+RETURN hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty" "+new-window"; }
     // open application by rofi
     Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn "~/.config/rofi/launcher/launcher.sh"; }
     // reload waybar
-    Mod+Shift+W { spawn-sh "pkill waybar || true && waybar --bar main-bar --config ~/.config/waybar/niri.jsonc --style ~/.config/waybar/niri.css"; }
+    Mod+Shift+W hotkey-overlay-title="Reload waybar" { spawn-sh "pkill waybar || true && waybar --bar main-bar --config ~/.config/waybar/niri.jsonc --style ~/.config/waybar/niri.css"; }
     // Power manager
     Mod+0 hotkey-overlay-title="Power Manager" { spawn "~/.config/rofi/powermenu/powermenu.sh"; }
     // open file manager

@@ -24,11 +24,21 @@ hl.bind("SUPER + H", hl.dsp.focus({ direction = "left" }))
 hl.bind("SUPER + J", hl.dsp.focus({ direction = "down" }))
 hl.bind("SUPER + K", hl.dsp.focus({ direction = "up" }))
 hl.bind("SUPER + L", hl.dsp.focus({ direction = "right" }))
+-- move focus with SUPER + Arrow
+hl.bind("SUPER + LEFT", hl.dsp.focus({ direction = "left" }))
+hl.bind("SUPER + DOWN", hl.dsp.focus({ direction = "down" }))
+hl.bind("SUPER + UP", hl.dsp.focus({ direction = "up" }))
+hl.bind("SUPER + RIGHT", hl.dsp.focus({ direction = "right" }))
 -- move window with SUPER + CTRL + HJKL
 hl.bind("SUPER + CTRL + H", hl.dsp.window.move({ direction = "left" }))
 hl.bind("SUPER + CTRL + J", hl.dsp.window.move({ direction = "down" }))
 hl.bind("SUPER + CTRL + K", hl.dsp.window.move({ direction = "up" }))
 hl.bind("SUPER + CTRL + L", hl.dsp.window.move({ direction = "right" }))
+-- move window with SUPER + CTRL + Arrow
+hl.bind("SUPER + CTRL + LEFT", hl.dsp.window.move({ direction = "left" }))
+hl.bind("SUPER + CTRL + DOWN", hl.dsp.window.move({ direction = "down" }))
+hl.bind("SUPER + CTRL + UP", hl.dsp.window.move({ direction = "up" }))
+hl.bind("SUPER + CTRL + RIGHT", hl.dsp.window.move({ direction = "right" }))
 
 -- Switch workspaces
 for i = 1, 9 do
