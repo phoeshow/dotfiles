@@ -101,3 +101,13 @@ hl.window_rule({
 	fullscreen = true,
 	fullscreen_state = "2",
 })
+
+hl.window_rule({
+	name = "File manager",
+	match = {
+		class = "^(org.gnome.Nautilus)",
+	},
+	float = true,
+	center = true,
+	size = { 1024, 768 },
+})

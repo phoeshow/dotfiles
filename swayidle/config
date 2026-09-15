@@ -1,0 +1,4 @@
+timeout 300 'swaylock'
+timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors'
+timeout 720 'systemctl suspend'
+before-sleep 'swaylock'

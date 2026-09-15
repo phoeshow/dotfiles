@@ -27,7 +27,7 @@
   },
 
   "clock": {
-    "format": "󰥔 {:%H:%M}",
+    "format": " {:%H:%M}",
     "locale": "C",
     "format-alt": "󰃮 {:%Y-%m-%d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
@@ -48,10 +48,10 @@
   },
 
   "network": {
-    "format-wifi": " {bandwidthDownBytes} ",
+    "format-wifi": " {bandwidthDownBytes}  ",
     "format-ethernet": "󰈀 {ifname}",
     "format-linked": "󰈀 {ifname} (No IP)",
-    "format-disconnected": "Disconnected ⚠",
+    "format-disconnected": "Disconnected  ",
     "format-alt": " {bandwidthUpBytes}| {bandwidthDownBytes}",
     "tooltip-format": "{ifname}: {ipaddr}",
     "interval": 5,
@@ -84,18 +84,17 @@
     "spacing": 5,
   },
 
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": "󰌪",
-    },
-  },
-
   "custom/wallpaper": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Click to choose a wallpaper",
     "on-click": "~/.config/rofi/wallpaper/wallpaper.sh",
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰒳 ",
+      "deactivated": "󰒲 ",
+    },
   },
 }

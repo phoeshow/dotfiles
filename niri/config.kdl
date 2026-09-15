@@ -18,6 +18,13 @@ environment {
     LANG "zh_CN.UTF-8"
     LANGUAGE "zh_CN:en_US"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
+    PROTON_ENABLE_WAYLAND "1"
+
+    QT_IM_MODULE "fcitx"
+    QT_IM_MODULES "wayland;fcitx;ibus"
+    XMODIFIERS "@im=fcitx"
+    SDL_IM_MODULE "fcitx"
+    GLFW_IM_MODULE "ibus"
 }
 
 hotkey-overlay {

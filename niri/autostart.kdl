@@ -7,10 +7,11 @@
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+spawn-sh-at-startup "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
 spawn-sh-at-startup "waybar --bar main-bar --config ~/.config/waybar/niri.jsonc --style ~/.config/waybar/niri.css"
 spawn-at-startup "mako"
 spawn-at-startup "awww-daemon"
 spawn-sh-at-startup "~/.config/rofi/wallpaper/wallpaper.sh init"
 spawn-sh-at-startup "udiskie --smart-tray"
-spawn-sh-at-startup "solaar --window=hide --battery-icons=regular"
-spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock -f" "timeout" "600" "niri msg action power-off-monitors" "before-sleep" "swaylock -f"
+
+spawn-at-startup "swayidle" "-w"

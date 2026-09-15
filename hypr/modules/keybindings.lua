@@ -1,6 +1,6 @@
 local terminal = "kitty"
 -- local terminal = "ghostty +new-window"
-local fileManager = "thunar"
+local fileManager = "nautilus"
 
 hl.bind("SUPER + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind("SUPER + Q", hl.dsp.window.close())

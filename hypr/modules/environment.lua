@@ -1,7 +1,21 @@
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
+-- locale
+hl.env("LANG", "zh_CN.UTF-8")
+hl.env("LANGUAGE", "zh_CN:en_US")
+
+-- IM
+hl.env("XMODIFIERS", "@im=fcitx")
+hl.env("QT_IM_MODULE", "fcitx")
+hl.env("GTK_IM_MODULE", "fcitx")
+hl.env("SDL_IM_MODULE", "fcitx")
+hl.env("GLFW_IM_MODULE", "fcitx")
+
 hl.env("XCURSOR_SIZE", "32")
 hl.env("HYPRCURSOR_SIZE", "32")
+
+hl.env("XCURSOR_THEME", "AC-Future")
+hl.env("HYPRCURSOR_THEME", "AC-Future")
 
 -- toolkit backend variables
 hl.env("GDK_BACKEND", "wayland,x11,*")

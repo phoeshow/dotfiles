@@ -14,8 +14,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // open terminal
-    Mod+RETURN hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
-    // Mod+RETURN hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty" "+new-window"; }
+    // Mod+RETURN hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
+    Mod+RETURN hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty" "+new-window"; }
     // open application by rofi
     Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn "~/.config/rofi/launcher/launcher.sh"; }
     // reload waybar
@@ -23,7 +23,7 @@ binds {
     // Power manager
     Mod+0 hotkey-overlay-title="Power Manager" { spawn "~/.config/rofi/powermenu/powermenu.sh"; }
     // open file manager
-    Mod+E hotkey-overlay-title="Open Thunar" { spawn "thunar"; }
+    Mod+E hotkey-overlay-title="Open File Manager" { spawn "nautilus"; }
 
     // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+ -l 1.0"; }
     // XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
@@ -273,8 +273,8 @@ binds {
     // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
-    Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { quit; }
+    // Mod+Shift+E { quit; }
+    // Ctrl+Alt+Delete { quit; }
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.

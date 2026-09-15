@@ -18,9 +18,7 @@ window#waybar {
 #clock,
 #network,
 #pulseaudio,
-#tray,
-#custom-wallpaper,
-#idle_inhibitor {
+#tray {
   padding: 0 10px;
   margin: 0 2px;
   background-color: transparent;
@@ -91,6 +89,12 @@ window#waybar {
   -gtk-icon-effect: highlight;
   color: #f38ba8;
   border-bottom-color: #f38ba8;
+}
+
+#idle_inhibitor,
+#custom-wallpaper {
+  margin: 0 4px;
+  padding: 0 4px;
 }
 
 #idle_inhibitor.deactivated {
