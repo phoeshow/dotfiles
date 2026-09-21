@@ -9,14 +9,7 @@
   "margin-bottom": 0,
   "modules-left": ["niri/workspaces"],
   "modules-center": [],
-  "modules-right": [
-    "pulseaudio",
-    "network",
-    "clock",
-    "tray",
-    "custom/wallpaper",
-    "idle_inhibitor",
-  ],
+  "modules-right": ["pulseaudio", "network", "clock", "tray", "custom/wallpaper", "idle_inhibitor"],
 
   "niri/workspaces": {
     "format": "{icon}",

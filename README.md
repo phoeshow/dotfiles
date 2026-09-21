@@ -1,18 +1,9 @@
 # Config
 
-## Brightness
+## keyd 按键映射
 
-调整屏幕亮度，需要安装`wl-gammarelay-rs`包，并且在启动时运行。
-按键的绑定如下：
-
-```conf
-bindl = , XF86MonBrightnessUp, exec, busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d +0.02
-bindl = , XF86MonBrightnessDown, exec, busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -0.02
-```
-
-## keyd config
-
-1. linux 中通过keyd设置了按键映射，效果是将`capslock`键重新映射，按键一次`esc`，长按并同时输入`hjkl`输入方向键。
+1. 安装keyd
+2. 编辑`/etc/keyd/default.conf`文件，增加如下内容
 
 ```conf
 [ids]
@@ -30,7 +21,14 @@ k = up
 l = right
 ```
 
-2. Mac 中通过其他映射软件可以实现相同的效果。
+3. 通过systemd启动
+
+```bash
+sudo systemctl enable --now keyd
+```
+
+4. 重启服务
+   `sudo keyd reload`
 
 ## Nuphy air75 keyboard
 

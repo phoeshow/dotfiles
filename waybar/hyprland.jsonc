@@ -1,20 +1,12 @@
 {
   "layer": "top",
   "posetion": "top", // Waybar position (top|bottom|left|right)
-  "height": 54,
+  "height": 30,
   "margin": 0,
   "spacing": 4,
   // Choose the order of the modules
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
-  "modules-right": [
-    "pulseaudio",
-    "network",
-    "cpu",
-    "memory",
-    "clock",
-    "tray",
-    "group/system",
-  ],
+  "modules-right": ["pulseaudio", "network", "cpu", "memory", "clock", "tray", "group/system"],
   "group/system": {
     "orientation": "horizontal",
     "drawer": {

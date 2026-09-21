@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
 CONFIG_PATH="$HOME/.config/rofi/wallpaper/theme.rasi"
-WALLPAPER_BASE_DIR="$HOME/Pictures/wallpapers"
+WALLPAPER_BASE_DIR="$HOME/Pictures/Wallpapers"
 
 main ()
 {
-  choice=$(ls ${WALLPAPER_BASE_DIR} | while read A ; do echo -en "$A\x00icon\x1f~/Pictures/wallpapers/$A\n" ; done | rofi -dmenu -mesg "Select wallpaper" -theme ${CONFIG_PATH})
+  choice=$(ls ${WALLPAPER_BASE_DIR} | while read A ; do echo -en "$A\x00icon\x1f~/Pictures/Wallpapers/$A\n" ; done | rofi -dmenu -mesg "Select wallpaper" -theme ${CONFIG_PATH})
   if [[ -z ${choice} ]]; then
     return
   fi
@@ -24,7 +24,7 @@ set_wallpaper() {
   if [[ -f "$HOME/.config/wallpaperpath" ]]; then
     wallpaperpath=$(<$HOME/.config/wallpaperpath)
   else
-    wallpaperpath="$HOME/Pictures/wallpapers/default.png"
+    wallpaperpath="$HOME/Pictures/Wallpapers/default.png"
     echo ${wallpaperpath} > $HOME/.config/wallpaperpath
   fi
 

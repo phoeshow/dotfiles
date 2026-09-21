@@ -53,7 +53,8 @@ imagebox {
     background-color:            transparent;
     background-image:            url("~/.config/rofi/image/image.png", height);
     orientation:                 vertical;
-    children:                    [ "inputbar", "dummy", "mode-switcher" ];
+    // children:                    [ "inputbar", "dummy", "mode-switcher" ];
+    children:                    [];
 }
 
 listbox {
@@ -61,7 +62,7 @@ listbox {
     padding:                     20px;
     background-color:            transparent;
     orientation:                 vertical;
-    children:                    [ "message", "listview" ];
+    children:                    [ "inputbar", "message", "listview" ];
 }
 
 dummy {
@@ -117,7 +118,7 @@ button selected {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       8;
+    lines:                       7;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
