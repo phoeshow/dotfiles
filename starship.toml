@@ -6,6 +6,9 @@ $os\
 $directory\
 $git_branch\
 $git_status\
+$lua\
+$nodejs\
+$golang\
 $fill\
 $cmd_duration\
 $time\
@@ -46,7 +49,7 @@ crust = "#11111b"
 
 [os]
 disabled = false
-style="bold blue"
+style = "bold blue"
 
 [os.symbols]
 Windows = "󰍲 "
@@ -89,6 +92,13 @@ format = " [](mauve)[$symbol $branch(:$remote_branch)](bold fg:base bg:mauve)
 [git_status]
 style = "bold flamingo"
 
+[lua]
+symbol = " "
+[rust]
+symbol = " "
+[golang]
+symbol = " "
+
 [cmd_duration]
 style = "bg:surface1"
 format = '[[ $duration ](fg:yellow bg:surface1)]($style)'
@@ -106,11 +116,3 @@ disabled = false
 symbol = "─"
 style = 'bold surface1'
 
-[character]
-disabled = false
-success_symbol = '[ ](bold fg:green)'
-error_symbol = '[ ](bold fg:red)'
-vimcmd_symbol = '[ ](bold fg:green)'
-vimcmd_replace_one_symbol = '[ ](bold fg:pink)'
-vimcmd_replace_symbol = '[ ](bold fg:pink)'
-vimcmd_visual_symbol = '[ ](bold fg:yellow)'

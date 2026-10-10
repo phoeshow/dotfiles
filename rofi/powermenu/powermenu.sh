@@ -73,7 +73,7 @@ run_cmd() {
       elif [[ $1 == '--suspend' ]]; then
         systemctl suspend
       elif [[ $1 == '--logout' ]]; then
-        niri msg action quit
+        niri msg action quit --skip-confirmation
       fi
     fi
 	else
