@@ -86,8 +86,8 @@ truncation_symbol = "…/"
 fish_style_pwd_dir_length = 1
 
 [git_branch]
-symbol = ""
-format = " [](mauve)[$symbol $branch(:$remote_branch)](bold fg:base bg:mauve)[](mauve) "
+symbol = ""
+format = " [](mauve)[$symbol$branch(:$remote_branch)](bold fg:base bg:mauve)[](mauve) "
 
 [git_status]
 style = "bold flamingo"
