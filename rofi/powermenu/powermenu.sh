@@ -10,9 +10,6 @@ logout=''
 yes=''
 no='󰅙'
 
-#  current desktop session "hyprland | niri"
-session="${XDG_CURRENT_DESKTOP}"
-
 dir="$HOME/.config/rofi/powermenu"
 
 # CMDs
@@ -54,27 +51,15 @@ run_rofi() {
 run_cmd() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
-    if [[ "$session" == "Hyprland" ]]; then
-      if [[ $1 == '--shutdown' ]]; then
-        hyprshutdown -t 'Shutting down ...' --post-cmd 'shutdown -P 0'
-      elif [[ $1 == '--reboot' ]]; then
-        systemctl reboot
-        hyprshutdown -t 'Restarting ...' --post-cmd 'reboot'
-      elif [[ $1 == '--suspend' ]]; then
-        systemctl suspend
-      elif [[ $1 == '--logout' ]]; then
-        hyprshutdown -t 'logout'
-      fi
-    elif [[ "$session" == "niri" ]]; then
-      if [[ $1 == '--shutdown' ]]; then
-        systemctl poweroff
-      elif [[ $1 == '--reboot' ]]; then
-        systemctl reboot
-      elif [[ $1 == '--suspend' ]]; then
-        systemctl suspend
-      elif [[ $1 == '--logout' ]]; then
-        niri msg action quit --skip-confirmation
-      fi
+    if [[ $1 == '--shutdown' ]]; then
+      hyprshutdown -t 'Shutting down ...' --post-cmd 'shutdown -P 0'
+    elif [[ $1 == '--reboot' ]]; then
+      systemctl reboot
+      hyprshutdown -t 'Restarting ...' --post-cmd 'reboot'
+    elif [[ $1 == '--suspend' ]]; then
+      systemctl suspend
+    elif [[ $1 == '--logout' ]]; then
+      hyprshutdown -t 'logout'
     fi
 	else
 		exit 0
@@ -91,11 +76,7 @@ case ${chosen} in
 		  run_cmd --reboot
         ;;
     $lock)
-      if [[ "$session" == "Hyprland" ]]; then
-        hyprlock
-      elif [[ "$session" == "niri" ]]; then
-        swaylock
-      fi
+      hyprlock
         ;;
     $suspend)
 		  run_cmd --suspend
