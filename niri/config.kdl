@@ -2,46 +2,16 @@ include "input.kdl"
 
 include "output.kdl"
 
-include "layout.kdl"
+include "environments.kdl"
+
+include "appearances.kdl"
 
 include "autostart.kdl"
 
-include "binds.kdl"
+include "keybindings.kdl"
 
 include "rules.kdl"
 
-
-environment {
-    QT_QPA_PLATFORM "wayland;xcb"
-    QT_QPA_PLATFORMTHEME "qt5ct"
-    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-    LANG "zh_CN.UTF-8"
-    LANGUAGE "zh_CN:en_US"
-    ELECTRON_OZONE_PLATFORM_HINT "auto"
-    PROTON_ENABLE_WAYLAND "1"
-
-    QT_IM_MODULE "fcitx"
-    QT_IM_MODULES "wayland;fcitx;ibus"
-    XMODIFIERS "@im=fcitx"
-    SDL_IM_MODULE "fcitx"
-    GLFW_IM_MODULE "ibus"
-}
-
-hotkey-overlay {
-    skip-at-startup
-}
-
-cursor {
-  xcursor-theme "AC-Future"
-  xcursor-size 42
-}
-
-// Uncomment this line to ask the clients to omit their client-side decorations if possible.
-// If the client will specifically ask for CSD, the request will be honored.
-// Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
-// This option will also fix border/focus ring drawing behind some semitransparent windows.
-// After enabling or disabling this, you need to restart the apps for this to take effect.
-prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -51,13 +21,3 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
 
-// Animation settings.
-// The wiki explains how to configure individual animations:
-// https://yalter.github.io/niri/Configuration:-Animations
-animations {
-    // Uncomment to turn off all animations.
-    // off
-
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
-}

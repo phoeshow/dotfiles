@@ -52,14 +52,13 @@ run_cmd() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
     if [[ $1 == '--shutdown' ]]; then
-      hyprshutdown -t 'Shutting down ...' --post-cmd 'shutdown -P 0'
+	    systemctl poweroff
     elif [[ $1 == '--reboot' ]]; then
       systemctl reboot
-      hyprshutdown -t 'Restarting ...' --post-cmd 'reboot'
     elif [[ $1 == '--suspend' ]]; then
       systemctl suspend
     elif [[ $1 == '--logout' ]]; then
-      hyprshutdown -t 'logout'
+	    niri msg action quit --skip-confirmation
     fi
 	else
 		exit 0
@@ -70,16 +69,16 @@ run_cmd() {
 chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)
-		  run_cmd --shutdown
+      run_cmd --shutdown
         ;;
     $reboot)
-		  run_cmd --reboot
+      run_cmd --reboot
         ;;
     $lock)
-      hyprlock
+      swaylock
         ;;
     $suspend)
-		  run_cmd --suspend
+      run_cmd --suspend
         ;;
     $logout)
       run_cmd --logout
