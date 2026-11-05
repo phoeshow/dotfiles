@@ -2,7 +2,6 @@ spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "dropbox" "start"
 spawn-sh-at-startup "~/.config/rofi/wallpaper/wallpaper.sh init"
 spawn-sh-at-startup "udiskie --smart-tray"
 

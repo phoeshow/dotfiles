@@ -50,3 +50,12 @@ hl.window_rule({
 
   no_blur = true,
 })
+
+hl.window_rule({
+  match = { class = "com.gabm.satty" },
+  no_anim = true,
+  float = true,
+  center = true,
+  --min_size = { 200, 200 },
+  --min_size = { 600, 600 },
+})

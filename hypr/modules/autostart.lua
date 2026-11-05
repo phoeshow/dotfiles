@@ -13,7 +13,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("waybar")
 
   -- wallpaper
-  hl.exec_cmd("hyprpaper")
+  hl.exec_cmd("sh ~/.config/rofi/wallpaper/wallpaper.sh init")
 
   -- clipboard
   hl.exec_cmd("wl-paste --type text --watch cliphist store")
@@ -26,4 +26,5 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("udiskie --smart-tray")
   hl.exec_cmd("fcitx5 -d --replace")
   hl.exec_cmd("clash-verge")
+  hl.exec_cmd("sleep 10 && ~/.nutstore/dist/bin/nutstore-pydaemon.py")
 end)

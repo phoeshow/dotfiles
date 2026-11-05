@@ -11,6 +11,7 @@ yes=''
 no='󰅙'
 
 dir="$HOME/.config/rofi/powermenu"
+DESKTOP="${XDG_CURRENT_DESKTOP}"
 
 # CMDs
 lastlogin="`last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
@@ -58,7 +59,14 @@ run_cmd() {
     elif [[ $1 == '--suspend' ]]; then
       systemctl suspend
     elif [[ $1 == '--logout' ]]; then
-	    niri msg action quit --skip-confirmation
+      case "$DESKTOP" in
+        "Hyprland") hyprctl dispatch "hl.dsp.exit()"
+        ;;
+        "niri") niri msg action quit --skip-confirmation
+        ;;
+        *) echo "default"
+        ;;
+      esac
     fi
 	else
 		exit 0
@@ -75,7 +83,14 @@ case ${chosen} in
       run_cmd --reboot
         ;;
     $lock)
-      swaylock
+      case "$DESKTOP" in
+        "Hyprland") hyprlock
+        ;;
+        "niri") swaylock
+        ;;
+        *) echo "default"
+        ;;
+      esac
         ;;
     $suspend)
       run_cmd --suspend

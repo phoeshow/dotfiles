@@ -20,7 +20,7 @@ window#waybar {
 }
 
 #workspaces {
-  padding: 0 2px;
+  padding: 0;
   margin: 2px 8px;
   border: 1px solid #9399b2;
   border-radius: 20px;
@@ -28,13 +28,17 @@ window#waybar {
 }
 
 #workspaces button {
-  padding: 0 4px;
-  margin: 0;
+  padding: 0 2px;
+  margin: 0 4px;
   color: #cdd6f4;
 }
 
 #workspaces button.empty {
   color: #9399b2;
+}
+
+#workspaces button.persistent {
+  color: #cdd6f4;
 }
 
 #workspaces button.visible {

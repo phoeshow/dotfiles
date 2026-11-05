@@ -1,6 +1,6 @@
 {
   "spacing": 0,
-  "modules-left": ["niri/workspaces"],
+  "modules-left": ["niri/workspaces", "hyprland/workspaces"],
   "modules-center": [],
   "modules-right": ["pulseaudio", "cpu", "memory", "network", "clock", "tray", "group/system"],
 
@@ -34,6 +34,18 @@
     "format-icons": {
       "active": "",
       "default": "",
+    },
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "empty": "",
+      "default": "",
+    },
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5, 6, 7, 8, 9],
     },
   },
 
