@@ -12,10 +12,11 @@ binds {
     // open file manager
     Mod+E hotkey-overlay-title="Open File Manager" { spawn "nautilus"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    // 音量/亮度统一走 media.sh，通过 mako 显示百分比 OSD（与 hypr 配置一致）
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "~/.config/scripts/media.sh volume-up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "~/.config/scripts/media.sh volume-down"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "~/.config/scripts/media.sh mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "~/.config/scripts/media.sh mic-mute"; }
 
 
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
@@ -23,8 +24,8 @@ binds {
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn-sh "~/.config/scripts/media.sh brightness-up 10"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "~/.config/scripts/media.sh brightness-down 10"; }
 
     Mod+O repeat=false { toggle-overview; }
 
@@ -127,8 +128,8 @@ binds {
     // These binds are also affected by touchpad's natural-scroll, so these
     // example binds are "inverted", since we have natural-scroll enabled for
     // touchpads by default.
-    // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
-    // Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
+    // Mod+TouchpadScrollDown { spawn-sh "~/.config/scripts/media.sh volume-up 2"; }
+    // Mod+TouchpadScrollUp   { spawn-sh "~/.config/scripts/media.sh volume-down 2"; }
 
     // You can refer to workspaces by index. However, keep in mind that
     // niri is a dynamic workspace system, so these commands are kind of
